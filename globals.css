@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --seam: 1px;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background: #171715;
+    color: #e7ddc9;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #b69a6a;
+    color: #171715;
+  }
+
+  .u-fifth ::selection {
+    background: #8a1520;
+    color: #ffffff;
+  }
+
+  /* Focus is a design element here, not an afterthought. Brass on Brooklyn,
+     rouge on Fifth, always two pixels clear of the element. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid #b69a6a;
+    outline-offset: 3px;
+  }
+
+  .u-fifth :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid #8a1520;
+    outline-offset: 3px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@layer components {
+  /* Brooklyn surface: rolled steel and old brick, built with gradients only so
+     no raster texture has to ship. */
+  .tex-brick {
+    background-color: #171715;
+    background-image:
+      linear-gradient(180deg, rgba(52, 39, 30, 0.55) 0%, rgba(23, 23, 21, 0) 45%),
+      repeating-linear-gradient(
+        90deg,
+        rgba(113, 30, 30, 0.07) 0px,
+        rgba(113, 30, 30, 0.07) 96px,
+        rgba(0, 0, 0, 0) 96px,
+        rgba(0, 0, 0, 0) 100px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(182, 154, 106, 0.05) 0px,
+        rgba(182, 154, 106, 0.05) 40px,
+        rgba(0, 0, 0, 0) 40px,
+        rgba(0, 0, 0, 0) 44px
+      );
+  }
+
+  .tex-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  /* Fifth surface: paper stock, warm white with a faint press impression. */
+  .tex-stock {
+    background-color: #f6f1e7;
+    background-image: radial-gradient(
+      circle at 20% 10%,
+      rgba(227, 201, 168, 0.35) 0%,
+      rgba(246, 241, 231, 0) 55%
+    );
+  }
+
+  .rule-brass {
+    border-top: 1px solid rgba(182, 154, 106, 0.35);
+  }
+
+  .rule-hair {
+    border-top: 1px solid rgba(0, 0, 0, 0.18);
+  }
+
+  .stamp {
+    font-family: var(--font-bk-body), system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@layer utilities {
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .edge-bleed {
+    margin-inline: calc(-1 * clamp(1rem, 5vw, 5rem));
+  }
+}
+
+/* Everything decorative stops. Interface feedback stays, but instantly. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

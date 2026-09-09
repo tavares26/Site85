@@ -1,0 +1,953 @@
+PROJETO: BROOKLYN & FIFTH — Barber & Beauty House
+
+Crie um site demonstrativo premium, responsivo e visualmente marcante para um estabelecimento fictício chamado BROOKLYN & FIFTH, reunindo duas experiências completamente diferentes dentro do mesmo site:
+
+* BROOKLYN — Barbershop
+* FIFTH — Beauty Salon
+
+O projeto será utilizado como demonstração comercial da Manhattan Studios para apresentar a barbearias e salões de beleza o nível de site que pode ser desenvolvido para seus negócios.
+
+O resultado deve parecer um projeto digital desenvolvido por uma agência criativa de alto nível, e não um template, landing page SaaS ou site facilmente reconhecível como gerado por IA.
+
+Priorize:
+
+1. direção artística;
+2. identidade;
+3. experiência mobile;
+4. criatividade de layout;
+5. microinterações;
+6. performance;
+7. acessibilidade.
+
+⸻
+
+1. STACK
+
+Utilize:
+
+* Next.js 15+ com App Router;
+* TypeScript;
+* Tailwind CSS;
+* React Server Components sempre que possível;
+* componentes client-side somente quando necessários para interações;
+* Framer Motion para animações quando realmente agregar valor;
+* Lucide apenas para ícones utilitários simples;
+* next/image para imagens;
+* next/font ou carregamento otimizado das fontes;
+* ESLint;
+* Prettier.
+
+Não adicione backend, banco de dados, autenticação ou integrações externas desnecessárias nesta demonstração.
+
+O sistema de agendamento será apenas uma simulação front-end.
+
+Não simule APIs ou serviços externos inexistentes.
+
+⸻
+
+2. CONCEITO
+
+BROOKLYN & FIFTH representa dois universos de beleza nova-iorquinos pertencentes à mesma marca.
+
+BROOKLYN
+
+Barbearia inspirada em:
+
+* Brooklyn;
+* brownstones;
+* barbearias clássicas;
+* fotografia de rua;
+* tijolo;
+* couro;
+* madeira;
+* metal;
+* fotografia analógica;
+* cultura urbana de Nova York.
+
+Sensação:
+
+masculina, artesanal, urbana, cinematográfica e sofisticada.
+
+Slogan:
+
+BUILT SHARP. STAY CLASSIC.
+
+FIFTH
+
+Salão inspirado em:
+
+* Manhattan;
+* Fifth Avenue;
+* Upper East Side;
+* editoriais de moda;
+* revistas;
+* jornais;
+* colunas sociais;
+* alta moda nova-iorquina;
+* atmosfera visual associada a Sex and the City e Gossip Girl.
+
+Utilize apenas essas obras como referência de atmosfera e linguagem visual.
+
+Não copie personagens, logos, textos ou outros elementos protegidos.
+
+Sensação:
+
+fashion, elegante, feminina, provocativa, editorial e cosmopolita.
+
+Slogan:
+
+NEW YORK LOOKS GOOD ON YOU.
+
+⸻
+
+3. TIPOGRAFIA — EXTREMAMENTE IMPORTANTE
+
+A tipografia é parte fundamental da identidade do projeto.
+
+NÃO utilize a combinação de fontes típica de sites gerados por IA.
+
+Evite usar como fonte principal:
+
+* Inter;
+* Geist;
+* Arial;
+* Roboto;
+* Open Sans;
+* Poppins;
+* Montserrat;
+* ou qualquer outra escolha genérica apenas por conveniência.
+
+Não quero que todo o site utilize uma única sans-serif moderna com diferentes pesos.
+
+Pesquise e selecione fontes diferentes, expressivas e adequadas à direção artística de cada universo.
+
+As fontes devem possuir licenciamento apropriado para uso web.
+
+Tipografia Brooklyn
+
+Buscar uma combinação de:
+
+* display condensada;
+* grotesca;
+* tipografia inspirada em pôsteres, jornais ou sinalização urbana;
+* fonte secundária altamente legível para textos.
+
+Títulos podem possuir letras estreitas, fortes e altas.
+
+Utilize recursos como:
+
+* uppercase;
+* tracking;
+* tamanhos extremos;
+* composição vertical;
+* texto seguindo elementos gráficos;
+* palavras parcialmente sobrepostas às fotografias.
+
+A tipografia deve contribuir para a sensação de Brooklyn industrial/editorial.
+
+Tipografia Fifth
+
+Utilizar uma linguagem completamente diferente.
+
+Buscar:
+
+* serifas editoriais expressivas;
+* serifas de alto contraste;
+* itálicos elegantes;
+* fontes display inspiradas em revistas de moda;
+* sans-serif secundária discreta para informações funcionais.
+
+A estética deve lembrar a composição de uma revista de moda ou coluna social de Manhattan.
+
+Explore:
+
+* manchetes enormes;
+* itálicos;
+* números;
+* pequenas legendas;
+* datelines;
+* capitulares;
+* alinhamentos assimétricos;
+* texto vertical;
+* composições de jornal.
+
+Regra
+
+Brooklyn e Fifth NÃO devem compartilhar exatamente a mesma hierarquia tipográfica.
+
+A troca entre os dois lados deve ser perceptível inclusive pela tipografia.
+
+Não escolher fontes apenas porque são populares em projetos de UI.
+
+A fonte precisa possuir personalidade.
+
+⸻
+
+4. TELA INICIAL
+
+Ao acessar /, apresentar uma tela fullscreen dividida verticalmente.
+
+Esquerda
+
+BROOKLYN
+
+BARBERSHOP
+
+Imagem cinematográfica de barbearia/Brooklyn.
+
+ENTER BROOKLYN →
+
+Direita
+
+FIFTH
+
+BEAUTY SALON
+
+Imagem editorial relacionada a Manhattan/moda.
+
+ENTER FIFTH →
+
+No desktop, hover sobre um lado deve fazê-lo expandir suavemente para aproximadamente 60–65% da viewport.
+
+O outro lado se contrai.
+
+Tipografia, imagem e pequenos elementos devem reagir ao movimento.
+
+No mobile, transformar a divisão em dois grandes blocos verticais.
+
+Não utilizar dois cards.
+
+A divisão deve ocupar a própria viewport.
+
+⸻
+
+5. TRANSIÇÃO ENTRE OS UNIVERSOS
+
+O usuário deve conseguir alternar a qualquer momento:
+
+BARBER / BEAUTY
+
+ou:
+
+SWITCH TO FIFTH →
+
+← SWITCH TO BROOKLYN
+
+Não realizar apenas uma troca seca de página.
+
+Criar uma transição curta e cinematográfica.
+
+Ao ir Brooklyn → Fifth:
+
+* textura industrial desaparece;
+* paleta clareia;
+* tipografia muda;
+* imagens mudam;
+* layout assume linguagem editorial.
+
+Ao retornar, ocorre o inverso.
+
+A animação deve ser rápida o suficiente para não atrapalhar a navegação.
+
+⸻
+
+6. BROOKLYN — IDENTIDADE
+
+Paleta aproximada:
+
+* #171715 carvão;
+* #34271E café;
+* #B69A6A latão;
+* #E7DDC9 papel envelhecido;
+* #711E1E vinho.
+
+Utilizar texturas discretas de:
+
+* tijolo;
+* couro;
+* madeira;
+* metal;
+* papel;
+* grain fotográfico.
+
+Evitar interface excessivamente limpa.
+
+Quero uma experiência tátil e física.
+
+⸻
+
+7. BROOKLYN — HERO
+
+Hero fullscreen ou quase fullscreen.
+
+Fotografia cinematográfica.
+
+Mostrar:
+
+BROOKLYN
+
+BUILT SHARP.
+STAY CLASSIC.
+
+BOOK A CUT →
+
+OUR SERVICES
+
+Pequenos elementos:
+
+BROOKLYN, NEW YORK
+
+EST. 2018
+
+Menu:
+
+CUTS — BARBERS — GALLERY — LOCATION — BOOK
+
+⸻
+
+8. MEET THE BARBERS
+
+Criar:
+
+MEET THE BARBERS
+
+Não utilizar cards convencionais.
+
+Usar como cenário uma barbearia clássica nova-iorquina.
+
+Posicionar as fotografias dos barbeiros integradas ao ambiente.
+
+Exemplo:
+
+MARCUS COLE
+Classic Cuts & Beard
+
+ANTHONY REED
+Fades & Styling
+
+JAMES WALKER
+Beard Specialist
+
+DANIEL BROOKS
+Classic Barbering
+
+Cada barbeiro deve possuir:
+
+* fotografia;
+* nome;
+* especialidade;
+* bio;
+* trabalhos;
+* avaliações;
+* disponibilidade fictícia;
+* BOOK WITH [NAME].
+
+A interação deve lembrar um retrato editorial, não um card de funcionário.
+
+⸻
+
+9. SERVIÇOS BROOKLYN — NAVALHA
+
+Esta é uma das principais peças visuais do projeto.
+
+Criar uma navalha clássica aberta de grande dimensão.
+
+Os serviços devem parecer gravados na lâmina.
+
+Exemplo:
+
+OUR SERVICES
+
+CLASSIC CUT — $35
+SKIN FADE — $40
+BEARD TRIM — $25
+CUT + BEARD — $55
+HOT TOWEL SHAVE — $30
+
+Hover/touch revela:
+
+* descrição;
+* duração;
+* preço;
+* BOOK.
+
+A navalha deve fazer parte da composição e ocupar espaço significativo.
+
+Não transformar isso em uma lista convencional acompanhada por um pequeno ícone de navalha.
+
+⸻
+
+10. CLIENTES BROOKLYN
+
+Criar:
+
+FRESH FROM THE CHAIR
+
+Mostrar clientes após os serviços.
+
+Estética:
+
+* fotografia de rua;
+* retratos;
+* grain;
+* preto e branco;
+* fotografia analógica.
+
+Adicionar:
+
+CUT BY MARCUS
+
+FADE BY ANTHONY
+
+etc.
+
+Criar alguns sliders:
+
+BEFORE / AFTER
+
+⸻
+
+11. THE WALL
+
+Criar uma galeria chamada:
+
+THE WALL
+
+Fotos de:
+
+* clientes;
+* cortes;
+* barbas;
+* barbeiros trabalhando;
+* detalhes da loja;
+* lifestyle.
+
+A composição deve lembrar fotografias e polaroids acumuladas em uma parede de barbearia.
+
+Evitar grid perfeito.
+
+⸻
+
+12. FIFTH — IDENTIDADE
+
+Ao entrar no Fifth, a linguagem deve mudar radicalmente.
+
+Paleta:
+
+* preto;
+* branco;
+* creme;
+* champagne;
+* vermelho profundo;
+* rosa somente como detalhe eventual.
+
+Utilizar muito espaço negativo.
+
+Priorizar:
+
+* serifas;
+* fotografia fashion;
+* layouts assimétricos;
+* editoriais;
+* páginas de revista;
+* jornais;
+* títulos enormes;
+* legendas pequenas.
+
+Não transformar Fifth simplesmente em Brooklyn com cores femininas.
+
+⸻
+
+13. FIFTH — HERO
+
+Criar hero inspirado em editorial de moda de Manhattan.
+
+Mostrar:
+
+FIFTH
+
+New York looks good on you.
+
+BOOK APPOINTMENT →
+
+DISCOVER FIFTH
+
+Menu:
+
+SERVICES — THE TEAM — THE EDIT — LOCATION — BOOK
+
+Pequenas informações podem parecer impressas em uma revista.
+
+⸻
+
+14. THE FIFTH EDIT — PROFISSIONAIS
+
+Criar:
+
+THE FIFTH EDIT
+
+Subtítulo:
+
+BEAUTY • STYLE • MANHATTAN
+
+e:
+
+THE WOMEN BEHIND THE LOOKS
+
+A seção deve parecer uma página de jornal/revista de moda.
+
+Fotografias em diferentes proporções.
+
+Exemplo:
+
+SOPHIA BENNETT
+Senior Hair Stylist
+
+CHLOE MARTIN
+Nail Artist
+
+EMILY ROSE
+Esthetician / Waxing Specialist
+
+OLIVIA PARK
+Colorist
+
+VICTORIA HAYES
+Makeup Artist
+
+Cada profissional possui:
+
+* fotografia;
+* nome;
+* área;
+* bio;
+* portfólio;
+* avaliações;
+* disponibilidade;
+* BOOK.
+
+Explore manchetes, colunas, divisórias, numeração de páginas e pequenas legendas.
+
+Não utilizar cards tradicionais.
+
+⸻
+
+15. SERVIÇOS FIFTH — SECADOR
+
+Outra peça central do projeto.
+
+Criar um secador de cabelo grande em perfil.
+
+Os serviços devem parecer estar sendo literalmente soprados pelo secador.
+
+Exemplo:
+
+HAIRCUT
+
+ COLOR
+
+  BLOWOUT
+
+NAILS
+
+  WAXING
+
+ BROWS
+
+   MAKEUP
+
+Durante o scroll, as palavras devem deslocar-se suavemente para longe do secador.
+
+Utilizar movimento, escala e rotação muito sutis.
+
+Ao selecionar uma palavra:
+
+COLOR & HIGHLIGHTS
+
+From $90
+90–180 min
+
+Descrição.
+
+BOOK →
+
+Manter acessibilidade e legibilidade.
+
+⸻
+
+16. SPOTTED ON FIFTH
+
+Criar:
+
+SPOTTED ON FIFTH
+
+Mostrar clientes como se fossem parte de uma coluna social/editorial.
+
+Utilizar fotografias grandes e layouts fashion.
+
+Exemplos de microcopy:
+
+Spotted on Fifth: another Manhattan transformation.
+
+Hair by Sophia Bennett
+
+Color by Olivia Park
+
+A inspiração em Gossip Girl deve aparecer de maneira sutil através da narrativa editorial, não através de cópia direta.
+
+⸻
+
+17. THE EDIT
+
+Criar uma galeria editorial:
+
+THE EDIT
+
+Misturar:
+
+* clientes;
+* resultados;
+* bastidores;
+* fotografias;
+* manchetes;
+* frases;
+* pequenos textos;
+* before/after.
+
+O layout deve lembrar uma revista digital.
+
+⸻
+
+18. SISTEMA DE AGENDAMENTO DEMONSTRATIVO
+
+Implementar fluxo front-end completo.
+
+01 — SERVICE
+
+Escolher serviço.
+
+02 — PROFESSIONAL
+
+Mostrar profissionais compatíveis.
+
+Adicionar:
+
+ANY AVAILABLE PROFESSIONAL
+
+03 — DATE
+
+Calendário interativo.
+
+04 — TIME
+
+Exemplo:
+
+09:00
+10:30
+13:00
+14:30
+16:00
+17:30
+
+05 — DETAILS
+
+Nome
+Telefone
+E-mail
+
+06 — REVIEW
+
+Serviço
+Profissional
+Data
+Horário
+Preço estimado
+
+CONFIRM APPOINTMENT
+
+Como é uma demonstração:
+
+DEMO EXPERIENCE — NO REAL APPOINTMENT WILL BE CREATED.
+
+Após confirmação:
+
+YOU’RE BOOKED.
+
+Mostrar uma confirmação fictícia elegante.
+
+Não enviar dados para nenhum serviço externo.
+
+⸻
+
+19. LOCALIZAÇÕES
+
+Criar dois endereços claramente fictícios/demonstrativos.
+
+BROOKLYN — BARBER HOUSE
+
+Mostrar:
+
+* endereço;
+* mapa visual;
+* horários;
+* telefone fictício;
+* Instagram fictício;
+* contato;
+* GET DIRECTIONS.
+
+FIFTH — BEAUTY HOUSE
+
+Mesmos dados.
+
+Brooklyn: mapa/interface escura.
+
+Fifth: clara/editorial.
+
+Não inventar links funcionais para empresas reais.
+
+⸻
+
+20. DEPOIMENTOS
+
+Criar depoimentos fictícios.
+
+Evitar:
+
+⭐⭐⭐⭐⭐ + card + comentário.
+
+Brooklyn:
+
+transformar depoimentos em citações sobre fotografias ou elementos impressos.
+
+Fifth:
+
+apresentar como trechos de críticas/editoriais ou quotes de revista.
+
+⸻
+
+21. MANHATTAN STUDIOS
+
+Deixar claro que o estabelecimento é fictício.
+
+Adicionar discretamente:
+
+DEMO BY MANHATTAN STUDIOS
+
+No final:
+
+THIS IS A DEMONSTRATION
+
+This fictional experience demonstrates what Manhattan Studios can build for barbershops and beauty salons.
+
+I WANT A WEBSITE LIKE THIS →
+
+Essa área deve possuir identidade própria e não ser confundida com conteúdo da Brooklyn & Fifth.
+
+⸻
+
+22. MOBILE FIRST
+
+A experiência mobile é extremamente importante.
+
+Adaptar:
+
+* split screen;
+* navegação;
+* navalha;
+* secador;
+* galerias;
+* before/after;
+* jornal Fifth;
+* profissionais;
+* sistema de agendamento.
+
+Não simplesmente reduzir o desktop.
+
+Criar decisões específicas para telas pequenas.
+
+Botões e áreas interativas devem possuir tamanho adequado para toque.
+
+⸻
+
+23. ANIMAÇÕES
+
+Utilizar movimento com propósito.
+
+Permitido:
+
+* image reveal;
+* clipping masks;
+* parallax discreto;
+* typography reveal;
+* hover editorial;
+* scroll-driven animation;
+* transição Brooklyn/Fifth;
+* navalha;
+* palavras sopradas pelo secador;
+* before/after;
+* microinterações.
+
+Respeitar:
+
+prefers-reduced-motion.
+
+Não utilizar animações apenas para demonstrar capacidade técnica.
+
+⸻
+
+24. PROIBIÇÕES VISUAIS
+
+Não quero estética típica de site gerado por IA.
+
+Evitar:
+
+* Inter/Geist como tipografia dominante;
+* gradientes roxo/azul;
+* glow;
+* glassmorphism;
+* blobs;
+* excesso de cards;
+* cards dentro de cards;
+* border-radius exagerado;
+* hero SaaS centralizado;
+* três cards imediatamente abaixo do hero;
+* ícones genéricos acompanhando todos os títulos;
+* grid perfeitamente previsível em todas as seções;
+* textos genéricos;
+* sombras exageradas;
+* componentes shadcn sem customização;
+* aparência de dashboard;
+* repetição da mesma composição em todas as seções.
+
+Não faça o site parecer um template.
+
+Prefira composição editorial, fotografia, tipografia, texturas, sobreposições e assimetria controlada.
+
+⸻
+
+25. IMAGENS
+
+As imagens são protagonistas.
+
+Se assets definitivos não estiverem disponíveis, estruturar o projeto para substituição fácil.
+
+Utilizar placeholders de alta qualidade coerentes com cada universo durante o desenvolvimento.
+
+Não usar imagens aleatórias apenas para preencher espaço.
+
+Brooklyn:
+
+* barbearia;
+* barbeiros;
+* Brooklyn;
+* brownstones;
+* clientes;
+* street photography.
+
+Fifth:
+
+* Manhattan;
+* salão;
+* profissionais;
+* fashion;
+* beleza;
+* editoriais;
+* clientes.
+
+Todas as imagens devem possuir tratamento e proporção coerentes com a direção artística.
+
+⸻
+
+26. ESTRUTURA
+
+Criar aproximadamente:
+
+/
+
+/brooklyn
+
+/brooklyn/barbers
+
+/brooklyn/services
+
+/brooklyn/gallery
+
+/fifth
+
+/fifth/team
+
+/fifth/services
+
+/fifth/edit
+
+/book
+
+/locations
+
+Evite duplicação desnecessária de lógica.
+
+Componentes podem compartilhar estrutura técnica quando apropriado, mas não force componentes visuais idênticos entre Brooklyn e Fifth apenas para reduzir código.
+
+⸻
+
+27. QUALIDADE TÉCNICA
+
+Garantir:
+
+* TypeScript sem erros;
+* componentes organizados;
+* responsividade;
+* acessibilidade;
+* HTML semântico;
+* SEO básico;
+* metadata;
+* imagens otimizadas;
+* lazy loading;
+* boa performance;
+* keyboard navigation;
+* focus states;
+* contraste adequado;
+* redução de movimento;
+* ausência de erros no console.
+
+⸻
+
+28. PROCESSO DE IMPLEMENTAÇÃO
+
+Antes de começar a programar:
+
+1. analise todo este briefing;
+2. defina arquitetura das páginas;
+3. defina sistema visual Brooklyn;
+4. defina sistema visual Fifth;
+5. selecione conscientemente as fontes;
+6. defina quais componentes serão compartilhados;
+7. planeje responsividade;
+8. planeje animações;
+9. só então implemente.
+
+Durante o desenvolvimento, não simplifique elementos criativos importantes apenas porque um componente convencional seria mais rápido.
+
+A navalha, o secador, o jornal das profissionais, a entrada dividida, a galeria de clientes e a transição Brooklyn/Fifth são elementos centrais do conceito.
+
+Se algum efeito complexo não puder ser implementado exatamente como imaginado, crie uma alternativa visual elegante que preserve a ideia original em vez de substituí-lo por um card comum.
+
+⸻
+
+29. RESULTADO ESPERADO
+
+Ao final, quero que um proprietário de barbearia ou salão consiga abrir esse site e imediatamente imaginar seu próprio negócio utilizando algo semelhante.
+
+A experiência deve comunicar:
+
+identidade → profissionais → serviços → resultados → confiança → localização → agendamento.
+
+BROOKLYN deve parecer uma barbearia de personalidade forte no Brooklyn.
+
+FIFTH deve parecer um beauty salon que poderia aparecer em um editorial de Manhattan.
+
+Os dois devem claramente pertencer à mesma marca, mas não devem parecer o mesmo template com cores diferentes.
+
+A tipografia, composição, fotografia e direção artística devem ser suficientemente distintas para que a mudança entre os dois universos seja imediatamente percebida.
+
+O resultado final deve ter aparência de um projeto digital customizado e desenvolvido especificamente para a marca BROOKLYN & FIFTH, servindo como showcase da capacidade criativa da Manhattan Studios.

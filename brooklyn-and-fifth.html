@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Brooklyn &amp; Fifth — Barber &amp; Beauty House</title>
+<meta name="description" content="Two houses, one address book. A barbershop in Brooklyn and a beauty salon on Fifth. Demonstration by Manhattan Studios." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================ tokens */
+:root{
+  --bk-ink:#171715; --bk-coffee:#34271E; --bk-brass:#B69A6A;
+  --bk-paper:#E7DDC9; --bk-wine:#711E1E; --bk-smoke:#22211E;
+  --ff-noir:#000000; --ff-chalk:#FFFFFF; --ff-cream:#F6F1E7;
+  --ff-champagne:#E3C9A8; --ff-rouge:#8A1520;
+  --slab:'Anton',Impact,sans-serif;
+  --grot:'Barlow Condensed',system-ui,sans-serif;
+  --didone:'Bodoni Moda',Didot,Georgia,serif;
+  --garamond:'Cormorant Garamond',Georgia,serif;
+  --blade:cubic-bezier(.22,1,.36,1);
+  --drape:cubic-bezier(.65,0,.35,1);
+  --pad:clamp(1.25rem,4vw,3rem);
+  --wrap:92rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{margin:0;background:var(--bk-ink);color:var(--bk-paper);overflow-x:hidden;font-family:var(--grot)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+
+/* house scopes */
+.u-bk{--bg:var(--bk-ink);--fg:var(--bk-paper);--accent:var(--bk-brass);--display:var(--slab);--body:var(--grot)}
+.u-ff{--bg:var(--ff-cream);--fg:var(--ff-noir);--accent:var(--ff-rouge);--display:var(--didone);--body:var(--garamond)}
+
+::selection{background:var(--bk-brass);color:var(--bk-ink)}
+.u-ff ::selection{background:var(--ff-rouge);color:#fff}
+
+:where(a,button,input,textarea,[tabindex]):focus-visible{outline:2px solid var(--bk-brass);outline-offset:3px}
+.u-ff :where(a,button,input,textarea,[tabindex]):focus-visible{outline:2px solid var(--ff-rouge)}
+
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;left:1rem;top:-100px;z-index:200;background:var(--bk-brass);color:var(--bk-ink);padding:.6rem 1.2rem;transition:top .2s}
+.skip:focus{top:1rem}
+
+/* ============================================================ scale */
+.t-mega{font-size:clamp(3.2rem,16vw,14rem);line-height:.82;letter-spacing:-.02em}
+.t-colossal{font-size:clamp(2.5rem,10.5vw,8.5rem);line-height:.86;letter-spacing:-.015em}
+.t-huge{font-size:clamp(1.9rem,6.2vw,4.6rem);line-height:.94}
+.t-big{font-size:clamp(1.4rem,3.4vw,2.6rem);line-height:1.06}
+.slab{font-family:var(--slab);text-transform:uppercase}
+.grot{font-family:var(--grot)}
+.didone{font-family:var(--didone)}
+.gara{font-family:var(--garamond)}
+.stamp{font-family:var(--grot);text-transform:uppercase;letter-spacing:.22em;font-size:.68rem;font-weight:600}
+.measure{max-width:62ch}
+.measure-s{max-width:70ch}
+.brass{color:var(--bk-brass)}
+.rouge{color:var(--ff-rouge)}
+.ital{font-style:italic}
+
+/* ============================================================ texture */
+.tex-brick{
+  background-color:var(--bk-ink);
+  background-image:
+    linear-gradient(180deg,rgba(52,39,30,.55) 0%,rgba(23,23,21,0) 45%),
+    repeating-linear-gradient(90deg,rgba(113,30,30,.07) 0 96px,rgba(0,0,0,0) 96px 100px),
+    repeating-linear-gradient(0deg,rgba(182,154,106,.05) 0 40px,rgba(0,0,0,0) 40px 44px);
+}
+.grain{position:relative}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.26;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
+.tex-stock{background-color:var(--ff-cream);background-image:radial-gradient(circle at 20% 10%,rgba(227,201,168,.35) 0%,rgba(246,241,231,0) 55%)}
+.rule{border-top:1px solid rgba(182,154,106,.32)}
+.rule-h{border-top:1px solid rgba(0,0,0,.16)}
+
+/* ============================================================ layout */
+.sec{padding:clamp(4rem,9vw,8rem) var(--pad)}
+.wrap{max-width:var(--wrap);margin:0 auto}
+.grid{display:grid;gap:clamp(1.5rem,3vw,3.5rem)}
+.stack>*+*{margin-top:1rem}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.9rem;padding:.95rem 1.8rem;background:var(--bk-brass);color:var(--bk-ink);border:0;cursor:pointer;transition:background .3s}
+.btn:hover{background:var(--bk-paper)}
+.u-ff .btn{background:var(--ff-noir);color:var(--ff-chalk)}
+.u-ff .btn:hover{background:var(--ff-rouge)}
+.btn[disabled]{cursor:not-allowed;background:rgba(182,154,106,.22);color:rgba(231,221,201,.4)}
+.u-ff .btn[disabled]{background:rgba(0,0,0,.15);color:rgba(0,0,0,.35)}
+.btn-g{display:inline-flex;align-items:center;gap:.9rem;padding:.9rem 1.5rem;background:transparent;border:1px solid rgba(182,154,106,.4);color:rgba(231,221,201,.75);cursor:pointer;transition:border-color .3s,color .3s}
+.btn-g:hover{border-color:var(--bk-brass);color:var(--bk-brass)}
+.u-ff .btn-g{border-color:rgba(0,0,0,.22);color:rgba(0,0,0,.7)}
+.u-ff .btn-g:hover{border-color:var(--ff-noir);color:var(--ff-rouge)}
+.link-u{background-image:linear-gradient(currentColor,currentColor);background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .42s var(--blade)}
+.link-u:hover,.link-u:focus-visible{background-size:100% 1px}
+
+/* reveal */
+[data-rev]{opacity:0;transform:translateY(18px);transition:opacity .75s var(--drape),transform .75s var(--drape)}
+[data-rev].in{opacity:1;transform:none}
+[data-rev="wipe"]{opacity:1;transform:none;clip-path:inset(0 100% 0 0);transition:clip-path 1.05s var(--blade)}
+[data-rev="wipe"].in{clip-path:inset(0 0 0 0)}
+.cut{display:block;overflow:hidden;padding-bottom:.08em}
+.cut>span{display:block;transform:translateY(112%);transition:transform 1s var(--blade)}
+.cut.in>span{transform:none}
+
+/* ============================================================ split entry */
+.split{display:flex;flex-direction:column;height:100svh;overflow:hidden;position:relative}
+.panel{position:relative;flex:1 1 0;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;transition:flex-grow .85s var(--blade)}
+.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.2s var(--blade),transform 1.2s var(--blade),filter 1.2s var(--blade)}
+.panel .veil{position:absolute;inset:0}
+.panel .inner{position:relative;padding:var(--pad);padding-bottom:clamp(2rem,5vw,4rem);display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.p-bk{background:var(--bk-ink)}
+.p-bk img{opacity:.42}
+.p-bk:hover img{opacity:.55;transform:scale(1.04)}
+.p-bk .veil{background:linear-gradient(180deg,rgba(23,23,21,.35) 0%,rgba(23,23,21,.8) 58%,rgba(23,23,21,.97) 100%)}
+.p-ff{background:var(--ff-cream)}
+.p-ff img{filter:grayscale(1);object-position:top}
+.p-ff:hover img{filter:grayscale(0);transform:scale(1.03)}
+.p-ff .veil{background:linear-gradient(180deg,rgba(246,241,231,.1) 0%,rgba(246,241,231,.72) 52%,rgba(246,241,231,.98) 100%)}
+.seam{position:absolute;left:0;top:50%;width:100%;height:1px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(182,154,106,.4),transparent);z-index:5;pointer-events:none}
+.amp{display:none}
+@media (hover:hover) and (min-width:768px){
+  .split{flex-direction:row}
+  .panel:hover{flex-grow:1.62}
+  .seam{left:50%;top:0;width:1px;height:100%;transform:translateX(-50%);background:linear-gradient(180deg,transparent,rgba(182,154,106,.4),transparent)}
+  .amp{display:flex;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;width:3.5rem;height:3.5rem;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(182,154,106,.5);background:var(--bk-ink);color:var(--bk-brass);font-family:var(--didone);font-style:italic;font-size:1.5rem;pointer-events:none}
+}
+
+/* ============================================================ nav */
+.nav{position:fixed;inset-inline:0;top:0;z-index:50;border-bottom:1px solid transparent;transition:background .5s,border-color .5s;backdrop-filter:blur(0)}
+.nav.scrolled{background:rgba(23,23,21,.93);border-bottom-color:rgba(182,154,106,.25);backdrop-filter:blur(10px)}
+.u-ff .nav.scrolled{background:rgba(246,241,231,.95);border-bottom-color:rgba(0,0,0,.14)}
+.nav .bar{max-width:110rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem var(--pad)}
+.mark{font-family:var(--slab);text-transform:uppercase;letter-spacing:.11em;font-size:1.3rem;color:var(--bk-paper)}
+.u-ff .mark{font-family:var(--didone);text-transform:none;letter-spacing:0;color:var(--ff-noir)}
+.nav-links{display:none;align-items:center;gap:1.9rem}
+@media (min-width:1024px){.nav-links{display:flex}.burger{display:none}}
+.nav-links a{color:rgba(231,221,201,.7);font-family:var(--grot);text-transform:uppercase;letter-spacing:.22em;font-size:.68rem;font-weight:600}
+.u-ff .nav-links a{color:rgba(0,0,0,.68);font-family:var(--garamond);text-transform:none;letter-spacing:0;font-size:1.05rem}
+.nav-links a.on{color:var(--bk-brass)}
+.u-ff .nav-links a.on{color:var(--ff-rouge);font-style:italic}
+.burger{background:none;border:0;cursor:pointer;color:var(--bk-paper);padding:.3rem}
+.u-ff .burger{color:var(--ff-noir)}
+.sheet{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;clip-path:inset(0 0 100% 0);transition:clip-path .6s var(--drape);visibility:hidden}
+.sheet.open{clip-path:inset(0 0 0 0);visibility:visible}
+.sheet .items{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.35rem;padding:0 var(--pad) 4rem}
+.sheet .items a{font-family:var(--slab);text-transform:uppercase;font-size:clamp(2.2rem,10vw,3.6rem);line-height:1.05;color:var(--bk-paper)}
+.u-ff .sheet .items a{font-family:var(--didone);text-transform:none;color:var(--ff-noir)}
+
+/* curtain */
+.curtain{position:fixed;inset:0;z-index:80;display:flex;pointer-events:none}
+.curtain span{flex:1;height:100%;transform-origin:top;transform:scaleY(1);transition:transform .85s cubic-bezier(.76,0,.24,1)}
+.curtain.up span{transform:scaleY(0)}
+.curtain b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:400;opacity:1;transition:opacity .45s ease-out}
+.curtain.up b{opacity:0}
+</style>
+<style>
+/* ============================================================ hero */
+.hero-bk{position:relative;min-height:92svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--bk-ink);padding-top:7rem}
+.hero-bk>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4}
+.hero-bk .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,23,21,.9) 0%,rgba(23,23,21,.45) 38%,rgba(23,23,21,.96) 100%)}
+.hero-bk .drop{position:absolute;left:var(--pad);top:0;width:1px;background:rgba(182,154,106,.5);height:0;transition:height 1.1s var(--drape)}
+.hero-bk.go .drop{height:58%}
+.hero-in{position:relative;padding:0 var(--pad) clamp(3rem,6vw,5rem)}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .8s var(--blade),transform .8s var(--blade)}
+.go .fade-up{opacity:1;transform:none}
+
+/* ============================================================ razor */
+.razor-wrap{position:sticky;top:7rem;height:46vh;max-width:220px;margin:0 auto}
+@media(min-width:640px){.razor-wrap{height:52vh;max-width:280px}}
+@media(min-width:1024px){.razor-wrap{height:74vh;max-width:none;margin:0}}
+#blade{transform-box:view-box;transform-origin:210px 452px;transition:transform .95s cubic-bezier(.3,1.35,.4,1)}
+.svc-row{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:1.5rem 0}
+.svc-name{font-family:var(--slab);text-transform:uppercase;font-size:clamp(1.6rem,4.4vw,3rem);color:var(--bk-paper);transition:color .3s;display:block}
+.svc-row:hover .svc-name,.svc-row.on .svc-name{color:var(--bk-brass)}
+.svc-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--blade),opacity .3s}
+.svc-row.on .svc-detail{grid-template-rows:1fr}
+.svc-detail>div{overflow:hidden}
+
+/* ============================================================ dryer */
+.dryer-wrap{position:sticky;top:7rem;height:30vh}
+@media(min-width:640px){.dryer-wrap{height:36vh}}
+@media(min-width:1024px){.dryer-wrap{height:58vh}}
+.svc-line{will-change:transform}
+.stream{stroke-dasharray:26 44;animation:blow 1.7s linear infinite}
+.stream:nth-child(2){animation-duration:1.95s}
+.stream:nth-child(3){animation-duration:2.2s}
+.stream:nth-child(4){animation-duration:2.45s}
+.stream:nth-child(5){animation-duration:2.7s}
+@keyframes blow{to{stroke-dashoffset:-140}}
+
+/* ============================================================ before/after */
+.ba-frame{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--bk-smoke);user-select:none;touch-action:pan-y}
+@media(min-width:640px){.ba-frame{aspect-ratio:3/2}}
+.ba-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-after{position:absolute;inset:0}
+.ba-div{position:absolute;top:0;bottom:0;width:1px;background:var(--bk-brass);pointer-events:none}
+.u-ff .ba-div{background:#fff}
+.ba-knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:2.75rem;height:2.75rem;border-radius:999px;background:var(--bk-brass);color:var(--bk-ink);display:flex;align-items:center;justify-content:center}
+.u-ff .ba-knob{background:#fff;color:var(--ff-noir)}
+.ba-tag{position:absolute;bottom:.75rem;padding:.25rem .5rem;pointer-events:none}
+input[type=range].ba{width:100%;margin-top:1rem;appearance:none;background:transparent;cursor:ew-resize}
+input[type=range].ba::-webkit-slider-runnable-track{height:1px;background:rgba(182,154,106,.4)}
+input[type=range].ba::-moz-range-track{height:1px;background:rgba(182,154,106,.4)}
+input[type=range].ba::-webkit-slider-thumb{appearance:none;margin-top:-9px;width:18px;height:18px;border-radius:999px;background:var(--bk-brass)}
+input[type=range].ba::-moz-range-thumb{border:0;width:18px;height:18px;border-radius:999px;background:var(--bk-brass)}
+.u-ff input[type=range].ba::-webkit-slider-runnable-track{background:rgba(0,0,0,.22)}
+.u-ff input[type=range].ba::-moz-range-track{background:rgba(0,0,0,.22)}
+.u-ff input[type=range].ba::-webkit-slider-thumb{background:var(--ff-rouge)}
+.u-ff input[type=range].ba::-moz-range-thumb{background:var(--ff-rouge)}
+
+/* ============================================================ wall & edit */
+.wall{columns:1;column-gap:1.5rem}
+@media(min-width:640px){.wall{columns:2}}
+@media(min-width:1024px){.wall{columns:3}}
+.wall>*{break-inside:avoid;margin-bottom:2rem}
+.polaroid{background:var(--bk-paper);padding:.75rem .75rem 2.5rem;box-shadow:0 26px 60px -32px rgba(0,0,0,.95);transition:transform .7s var(--blade)}
+.polaroid:hover{transform:rotate(0) scale(1.015)!important}
+.polaroid .shot{position:relative;width:100%;overflow:hidden;background:var(--bk-ink)}
+.polaroid .shot img{width:100%;height:100%;object-fit:cover;filter:saturate(.7)}
+.edit-grid{display:grid;grid-template-columns:1fr;gap:2rem clamp(1rem,3vw,2rem)}
+@media(min-width:640px){.edit-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.edit-grid{grid-template-columns:repeat(12,1fr);gap:3.5rem 2rem}
+  .sp-tall{grid-column:span 5}.sp-wide{grid-column:span 7}.sp-square{grid-column:span 4}
+  .drop-lo{padding-top:5rem}}
+
+/* ============================================================ team */
+.plate-img{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--bk-smoke)}
+.plate-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) contrast(1.06)}
+.plate-veil{position:absolute;inset:0;background:linear-gradient(200deg,rgba(23,23,21,0) 45%,rgba(23,23,21,.85) 100%)}
+.thumb{position:relative;width:5rem;height:6.5rem;overflow:hidden;background:rgba(0,0,0,.3)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.dropcap::first-letter{float:left;margin-right:.5rem;font-family:var(--didone);font-size:3.8rem;line-height:.78;color:var(--ff-rouge)}
+
+/* ============================================================ booking */
+.steps{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;margin-top:2rem}
+.steps button{display:flex;align-items:center;gap:.5rem;background:none;border:0;cursor:pointer;color:rgba(231,221,201,.28)}
+.u-ff .steps button{color:rgba(0,0,0,.28)}
+.steps button.past{color:rgba(231,221,201,.6)}
+.u-ff .steps button.past{color:rgba(0,0,0,.55)}
+.steps button.now{color:var(--bk-brass)}
+.u-ff .steps button.now{color:var(--ff-rouge)}
+.steps i{display:flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:999px;border:1px solid currentColor;font-style:normal;font-size:.6rem}
+.steps button.past i{background:var(--bk-brass);color:var(--bk-ink);border-color:var(--bk-brass)}
+.u-ff .steps button.past i{background:var(--ff-rouge);color:#fff;border-color:var(--ff-rouge)}
+.chip{display:block;width:100%;text-align:left;padding:1rem 1.25rem;border:1px solid rgba(182,154,106,.25);background:none;color:rgba(231,221,201,.78);cursor:pointer;transition:border-color .3s,background .3s}
+.chip:hover{border-color:rgba(182,154,106,.7)}
+.chip.on{border-color:var(--bk-brass);background:rgba(182,154,106,.12);color:var(--bk-paper)}
+.chip[disabled]{opacity:.25;cursor:not-allowed}
+.u-ff .chip{border-color:rgba(0,0,0,.2);color:rgba(0,0,0,.78)}
+.u-ff .chip:hover{border-color:rgba(0,0,0,.6)}
+.u-ff .chip.on{border-color:var(--ff-rouge);background:rgba(138,21,32,.07);color:var(--ff-noir)}
+.fld{width:100%;background:none;border:0;border-bottom:1px solid rgba(182,154,106,.35);padding:.7rem 0;font-family:var(--grot);font-size:1.25rem;color:var(--bk-paper)}
+.u-ff .fld{border-bottom-color:rgba(0,0,0,.25);font-family:var(--garamond);color:var(--ff-noir)}
+.fld::placeholder{color:rgba(231,221,201,.3)}
+.u-ff .fld::placeholder{color:rgba(0,0,0,.3)}
+.warn{background:var(--bk-wine);color:var(--bk-paper);padding:.4rem .75rem;display:inline-block}
+.u-ff .warn{background:var(--ff-rouge);color:#fff}
+
+/* ============================================================ misc */
+.cross{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;border:1px solid rgba(182,154,106,.25);padding:clamp(1.75rem,4vw,3rem);transition:border-color .35s}
+.cross:hover{border-color:rgba(182,154,106,.7)}
+.u-ff .cross{border-color:rgba(0,0,0,.15)}
+.u-ff .cross:hover{border-color:rgba(0,0,0,.5)}
+.card-img{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--bk-ink)}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--blade),filter .9s var(--blade)}
+.card:hover .card-img img{transform:scale(1.05)}
+.gray img{filter:grayscale(1);object-position:top}
+.card:hover .gray img{filter:grayscale(0)}
+.sat img{filter:saturate(.6)}
+.card:hover .sat img{filter:saturate(1)}
+.map-plate{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(182,154,106,.25)}
+.u-ff .map-plate{border-color:rgba(0,0,0,.15)}
+.shot16{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--bk-smoke)}
+.shot16 img{width:100%;height:100%;object-fit:cover}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  [data-rev]{opacity:1;transform:none;clip-path:none}
+  .cut>span{transform:none}
+  .fade-up{opacity:1;transform:none}
+  .curtain{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip stamp" href="#main">Skip to content</a>
+<div id="app"></div>
+<script>
+"use strict";
+/* ================================================================= data */
+const U = (id,w) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w||1200}&q=80`;
+
+const AGENCY = {
+  signature:"DEMO BY MANHATTAN STUDIOS",
+  warn:"DEMO EXPERIENCE — NO REAL APPOINTMENT WILL BE CREATED.",
+  cta:"I WANT A WEBSITE LIKE THIS"
+};
+
+const BK_SVC = [
+  {id:"bk-skin",name:"The Skin Fade",m:45,p:55,blurb:"Clipper work down to nothing, blended by eye.",detail:"Guards off at the nape, four passes of blending, finished with a razor line at the temple. Booked most on Fridays."},
+  {id:"bk-scissor",name:"Scissor Cut &amp; Style",m:50,p:60,blurb:"Shears only. Weight taken out, shape left in.",detail:"For hair long enough to fall. We cut dry so what you see in the chair is what walks out on Bedford Avenue."},
+  {id:"bk-shave",name:"Hot Towel Shave",m:40,p:50,blurb:"Steam, badger brush, cold finish.",detail:"Three towels, two passes, one blade that gets changed in front of you. Twenty minutes of it is just sitting still."},
+  {id:"bk-beard",name:"Beard Architecture",m:35,p:40,blurb:"Lines set with a straight edge, not a guess.",detail:"Cheek line, neck line, corner shape. We map it to your jaw first and only then pick up the trimmer."},
+  {id:"bk-grey",name:"Grey Blending",m:30,p:35,blurb:"Softened, not erased.",detail:"A ten minute process that takes the grey down about half. Nobody notices the colour, they notice you slept well."},
+  {id:"bk-father",name:"Father &amp; Son",m:70,p:85,blurb:"Two chairs, side by side, one appointment.",detail:"Two barbers work at the same time so nobody waits. First haircut certificates are kept behind the register."}
+];
+
+const FF_SVC = [
+  {id:"ff-cut",name:"Precision Cut",m:60,p:145,blurb:"Cut to the way your hair actually falls.",detail:"A consultation you sit through fully dressed, in front of a mirror, before a single section is taken."},
+  {id:"ff-colour",name:"Dimensional Colour",m:150,p:320,blurb:"Three tones, no visible line of demarcation.",detail:"Foils, a root shadow and a gloss. Grown out at four months it still reads as intentional."},
+  {id:"ff-balayage",name:"Hand-Painted Balayage",m:180,p:380,blurb:"Painted freehand against the light of the window.",detail:"No foil, no cap. Brightness placed where the sun would have put it if you lived somewhere warmer."},
+  {id:"ff-gloss",name:"Glass Gloss",m:45,p:95,blurb:"Twenty minutes that reads as eight hours of sleep.",detail:"An acidic gloss that closes the cuticle. Booked the afternoon before something that gets photographed."},
+  {id:"ff-blowout",name:"The Fifth Blowout",m:45,p:85,blurb:"Round brush, cold shot, no product weight.",detail:"The house style. Volume at the root, movement through the mid, ends left alone entirely."},
+  {id:"ff-bridal",name:"Bridal &amp; Event Styling",m:120,p:450,blurb:"Rehearsed once, delivered once.",detail:"A trial six weeks out with photographs from four angles, then the day itself, on location if you need it."}
+];
+
+const BARBERS = [
+  {id:"bk-dez",name:"Desmond Ruiz",handle:"DEZ",role:"Master barber, chair one",u:"bk",years:19,rating:4.9,reviews:412,chair:"Chair 01",
+   bio:"Learned on Nostrand Avenue at fifteen, sweeping hair for a man who would not let him hold clippers until he could name every bone in the skull. Opened the Brooklyn room in 2016 with two chairs and a radio.",
+   quote:"A fade is not a haircut. It is an argument about where light should stop.",
+   spec:["Skin fades","Straight razor","Textured crops"],
+   port:[U("photo-1647140655214-e4a2d914971f",600),U("photo-1672642150228-3fcd5826ec26",600)],
+   portrait:U("photo-1647140655214-e4a2d914971f",1000)},
+  {id:"bk-otis",name:"Otis Vance",handle:"THE HAND",role:"Straight razor specialist",u:"bk",years:26,rating:5.0,reviews:268,chair:"Chair 02",
+   bio:"Twenty-six years, three shops, one blade angle he refuses to discuss on the record. Shaves in near silence and finishes every service by turning the chair to face away from the mirror for ten seconds.",
+   quote:"You want the towel hot enough to complain about. Not hot enough to move.",
+   spec:["Hot towel shave","Beard architecture","Classic side part"],
+   port:[U("photo-1517832606299-7ae9b720a186",600),U("photo-1598524374912-6b0b0bab43dd",600)],
+   portrait:U("photo-1517832606299-7ae9b720a186",1000)},
+  {id:"bk-sal",name:"Salvatore Greco",handle:"SAL",role:"Barber, scissor work",u:"bk",years:11,rating:4.8,reviews:331,chair:"Chair 03",
+   bio:"Third generation. His grandfather cut hair on Court Street with the same pair of Japanese shears Sal still uses on Saturdays, sharpened once a year by a man in Queens who does nothing else.",
+   quote:"Clippers are fast. Shears are honest. I get paid for honest.",
+   spec:["Scissor cut","Grey blending","Long layers"],
+   port:[U("photo-1598524374912-6b0b0bab43dd",600),U("photo-1605497788044-5a32c7078486",600)],
+   portrait:U("photo-1598524374912-6b0b0bab43dd",1000)},
+  {id:"bk-june",name:"June Okafor",handle:"JUNE",role:"Barber, texture and curl",u:"bk",years:8,rating:4.9,reviews:297,chair:"Chair 04",
+   bio:"Came to barbering from sculpture and still talks about heads as volumes. Runs the Sunday apprentice hours, which is why the shop opens on a day it does not have to.",
+   quote:"Curl has a direction. Cut against it and you spend a month apologising.",
+   spec:["Curl patterns","Tapered afros","Kids' first cuts"],
+   port:[U("photo-1672642150228-3fcd5826ec26",600),U("photo-1605497788044-5a32c7078486",600)],
+   portrait:U("photo-1672642150228-3fcd5826ec26",1000)}
+];
+
+const STYLISTS = [
+  {id:"ff-margaux",name:"Margaux Deveraux",handle:"Creative Director",role:"Colour, editorial",u:"ff",years:22,rating:5.0,reviews:508,chair:"Station I",
+   bio:"Trained in Paris, spent eleven seasons backstage before deciding she preferred clients to castings. Opened the Fifth room to make the backstage standard available on a Tuesday afternoon.",
+   quote:"Fashion is a season. A good colour is a year. I would rather do the year.",
+   spec:["Dimensional colour","Corrective work","Editorial styling"],
+   port:[U("photo-1606143412458-acc5f86de897",600),U("photo-1536180838057-b604200e6f36",600)],
+   portrait:U("photo-1606143412458-acc5f86de897",1000)},
+  {id:"ff-noor",name:"Noor Haddad",handle:"Senior Stylist",role:"Cutting, curl specialist",u:"ff",years:14,rating:4.9,reviews:442,chair:"Station II",
+   bio:"Cuts curl dry, always, and will politely refuse to do it any other way. Keeps a waiting list that she clears personally every January.",
+   quote:"I am not cutting hair. I am deciding what your hair is allowed to do without you.",
+   spec:["Dry cutting","Curl shaping","Fringe"],
+   port:[U("photo-1536180838057-b604200e6f36",600),U("photo-1727341557146-4abab94d0812",600)],
+   portrait:U("photo-1536180838057-b604200e6f36",1000)},
+  {id:"ff-isabel",name:"Isabel Ferreira",handle:"Colourist",role:"Balayage, blonde",u:"ff",years:10,rating:4.9,reviews:376,chair:"Station III",
+   bio:"Paints against the window on the west side of the room because she will not judge tone under artificial light. Books blondes only, and says no more often than yes.",
+   quote:"Blonde is not a colour. It is a maintenance schedule you agree to.",
+   spec:["Hand-painted balayage","Blonde correction","Root shadow"],
+   port:[U("photo-1727341557146-4abab94d0812",600),U("photo-1629511565591-a1d494ad6c58",600)],
+   portrait:U("photo-1727341557146-4abab94d0812",1000)},
+  {id:"ff-adaeze",name:"Adaeze Mensah",handle:"Styling &amp; Bridal",role:"Events, finishing",u:"ff",years:12,rating:5.0,reviews:291,chair:"Station IV",
+   bio:"Has finished hair in four hotel bathrooms on the Upper East Side and one freight elevator. Keeps a rehearsal photograph of every bride, printed, in a book by the door.",
+   quote:"On the day, nobody wants to be surprised. That is what the trial is for.",
+   spec:["Bridal","Updos","Blowouts"],
+   port:[U("photo-1629511565591-a1d494ad6c58",600),U("photo-1533392151650-269f96231f65",600)],
+   portrait:U("photo-1629511565591-a1d494ad6c58",1000)}
+];
+
+const WALL = [
+  {src:U("photo-1781455793310-8427c96454c7",1100),alt:"Empty barbershop with leather chairs lined up under mirrors",cap:"Opening morning, 2016",meta:"Two chairs, one radio",tilt:-2.4,span:"wide"},
+  {src:U("photo-1647140655214-e4a2d914971f",800),alt:"Barber cutting a client's hair with scissors",cap:"Dez, chair one",meta:"Shot on a Tuesday",tilt:1.8,span:"tall"},
+  {src:U("photo-1759142449398-89357aa1bb36",900),alt:"Barbershop wall covered in vintage posters",cap:"The wall, west side",meta:"Nothing here is for sale",tilt:-1.2,span:"square"},
+  {src:U("photo-1517832606299-7ae9b720a186",800),alt:"Black and white photograph of a beard being trimmed",cap:"Otis, second pass",meta:"Blade changed in front of you",tilt:2.6,span:"tall"},
+  {src:U("photo-1772567925625-3488620d1626",1100),alt:"Barbershop window on a New York street at night",cap:"Closing, 9:40pm",meta:"Corner of Wythe",tilt:-0.8,span:"wide"},
+  {src:U("photo-1754294437661-129b86f868ea",900),alt:"Barbershop mirror with a patterned cape and tools",cap:"Station three",meta:"Cape by a friend in Ridgewood",tilt:1.4,span:"square"},
+  {src:U("photo-1605497788044-5a32c7078486",800),alt:"Barber in a denim apron using a blow dryer",cap:"Sal, finishing",meta:"Cold shot, always",tilt:-2.1,span:"tall"},
+  {src:U("photo-1759134248487-e8baaf31e33e",1100),alt:"Barbershop interior seen through the front window",cap:"From the sidewalk",meta:"Walk-ins before 11am",tilt:0.9,span:"wide"}
+];
+
+const EDIT = [
+  {src:U("photo-1606143412458-acc5f86de897",900),alt:"Portrait of a woman in a black top",cap:"Ana, November",meta:"Colour by Margaux",span:"tall"},
+  {src:U("photo-1580618672591-eb180b1a973f",1100),alt:"Stylist using a round brush and blow dryer",cap:"The house blowout",meta:"Forty-five minutes",span:"wide"},
+  {src:U("photo-1536180838057-b604200e6f36",900),alt:"Black and white portrait of a woman",cap:"Eto, studio",meta:"Cut by Noor",span:"tall"},
+  {src:U("photo-1560869713-7d0a29430803",800),alt:"Close view of a hand holding a curling iron",cap:"Set, not curled",meta:"Station IV",span:"square"},
+  {src:U("photo-1727341557146-4abab94d0812",900),alt:"Woman holding a black coat across her face",cap:"Off Madison",meta:"Balayage by Isabel",span:"tall"},
+  {src:U("photo-1634449571010-02389ed0f9b0",1100),alt:"A stylist cutting a seated client's hair",cap:"The consultation",meta:"Before anything is sectioned",span:"wide"},
+  {src:U("photo-1533392151650-269f96231f65",900),alt:"Black and white studio portrait",cap:"Test, 5:15pm",meta:"Styling by Adaeze",span:"tall"},
+  {src:U("photo-1629511565591-a1d494ad6c58",900),alt:"Woman in a black blazer photographed indoors",cap:"Issue four",meta:"Full story in the room",span:"square"}
+];
+
+const BA_BK = [
+  {t:"Grown out to skin fade",n:"Fourteen weeks between the two frames. Forty-five minutes between the two haircuts.",by:"Desmond Ruiz",b:U("photo-1672642150228-3fcd5826ec26",900),a:U("photo-1647140655214-e4a2d914971f",900),ba:"Client in the chair before the cut",aa:"The finished fade"},
+  {t:"Beard mapped to the jaw",n:"Cheek line dropped four millimetres. That is the whole change.",by:"Otis Vance",b:U("photo-1598524374912-6b0b0bab43dd",900),a:U("photo-1517832606299-7ae9b720a186",900),ba:"Beard before shaping",aa:"Beard after the line work"},
+  {t:"Scissor cut, weight removed",n:"Nothing taken off the length. Everything taken out of the middle.",by:"Salvatore Greco",b:U("photo-1605497788044-5a32c7078486",900),a:U("photo-1598524374912-6b0b0bab43dd",900),ba:"Hair before the scissor work",aa:"Hair after the scissor work"}
+];
+
+const BA_FF = [
+  {t:"Box dye to dimensional brunette",n:"One session, three tones, a root shadow to buy six months.",by:"Margaux Deveraux",b:U("photo-1634449571010-02389ed0f9b0",900),a:U("photo-1606143412458-acc5f86de897",900),ba:"Hair before the colour service",aa:"Hair after the colour service"},
+  {t:"Curl cut dry",n:"No length lost. The shape was already in there.",by:"Noor Haddad",b:U("photo-1560869713-7d0a29430803",900),a:U("photo-1536180838057-b604200e6f36",900),ba:"Curls before the dry cut",aa:"Curls after the dry cut"},
+  {t:"Balayage, second pass",n:"Painted against the west window. Glossed at the basin, not the chair.",by:"Isabel Ferreira",b:U("photo-1580618672591-eb180b1a973f",900),a:U("photo-1727341557146-4abab94d0812",900),ba:"Hair before balayage",aa:"Hair after balayage"}
+];
+
+const VOICES = [
+  {u:"bk",q:"I moved to Chicago and flew back twice before I admitted what I was doing. Third time I just booked the chair and the flight together.",n:"Marcus T.",d:"Client since 2017"},
+  {u:"bk",q:"My son cried through his first haircut. June kept cutting and talking to him about dinosaurs. He asks to go now.",n:"Priya R.",d:"Sunday hours"},
+  {u:"ff",q:"Isabel told me no twice before she said yes. That is the reason I trusted her the third time.",n:"Helene V.",d:"Blonde, four years"},
+  {u:"ff",q:"The trial was six weeks out and she photographed it from four angles. On the day there were no decisions left to make.",n:"Caroline A.",d:"Bridal, June"}
+];
+
+const LOCS = [
+  {u:"bk",name:"The Brooklyn Room",street:"214 Wythe Avenue",city:"Williamsburg, Brooklyn, NY 11249",
+   subway:"L to Bedford Av &nbsp;/&nbsp; J M Z to Marcy Av",phone:"(718) 555-0142",
+   hours:[["Tue to Fri","9:00 — 20:00"],["Saturday","8:00 — 19:00"],["Sunday","10:00 — 16:00, apprentice hours"],["Monday","Closed"]],
+   note:"Walk-ins taken before 11am on weekdays. Four chairs, no waiting room, one bench outside.",
+   img:U("photo-1739131936348-aa227601f140",1300),alt:"A Williamsburg street lined with brick buildings"},
+  {u:"ff",name:"The Fifth Room",street:"1067 Fifth Avenue, third floor",city:"Upper East Side, New York, NY 10128",
+   subway:"4 5 6 to 86 St &nbsp;/&nbsp; Q to 86 St",phone:"(212) 555-0198",
+   hours:[["Tue to Fri","10:00 — 20:00"],["Saturday","9:00 — 18:00"],["Sun and Mon","By appointment only"]],
+   note:"By appointment. The buzzer is unmarked. Take the lift on the left to three.",
+   img:U("photo-1649560065937-8405481a53d8",1300),alt:"A row of tall buildings with a clock on the facade"}
+];
+
+const SLOTS = ["9:00","9:45","10:30","11:15","12:00","13:30","14:15","15:00","15:45","16:30","17:15","18:00","18:45","19:30"];
+const TAKEN = {"bk-dez":["10:30","12:00","15:00","18:00"],"bk-otis":["9:00","13:30","16:30"],"bk-sal":["11:15","14:15","17:15","19:30"],"bk-june":["9:45","15:45","18:45"],
+"ff-margaux":["9:00","11:15","15:00","17:15"],"ff-noor":["10:30","14:15","18:45"],"ff-isabel":["9:45","12:00","16:30","19:30"],"ff-adaeze":["13:30","15:45","18:00"]};
+
+const CREDITS = ["Barney Goodman","Babak Eshaghian","Chaps and Co","Adam Kring","Nate Johnston","Nathon Oski","Jeppe Mønster","Redd Francisco","Lindsay Cash","Adam Winger","delfina pan","Baylee Gramling","ali nejatian","Aiony Haust","Branislav Rodman","Anni Peng","Dmytro Tolokonov","Zoshua Colah","Gerda","B W"];
+
+/* ============================================================== helpers */
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+const arrow = (w) => `<svg width="${w||22}" height="8" viewBox="0 0 ${w||22} 8" fill="none" aria-hidden="true"><path d="M0 4h${(w||22)-2}M${(w||22)-6} 1l4 3-4 3" stroke="currentColor" stroke-width="1.2"/></svg>`;
+const cut = (txt,cls) => `<span class="cut"><span class="${cls||''}">${txt}</span></span>`;
+const isBk = u => u === "bk";
+const esc = v => String(v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+const LINKS = {
+  bk:[["#/brooklyn","The Shop"],["#/brooklyn/barbers","Barbers"],["#/brooklyn/services","Services"],["#/brooklyn/gallery","The Wall"],["#/locations","Find Us"]],
+  ff:[["#/fifth","The Salon"],["#/fifth/team","The Fifth Edit"],["#/fifth/services","Services"],["#/fifth/edit","The Edit"],["#/locations","Find Us"]]
+};
+
+function nav(u,path){
+  const other = isBk(u) ? ["#/fifth","Cross to Fifth"] : ["#/brooklyn","Cross to Brooklyn"];
+  const items = LINKS[u].map(([h,l])=>`<a href="${h}" class="link-u${h===path?' on':''}">${l}</a>`).join("");
+  const sheetItems = LINKS[u].map(([h,l])=>`<a href="${h}" data-close>${l}</a>`).join("");
+  return `
+  <nav class="nav" aria-label="${isBk(u)?'Brooklyn':'Fifth'} navigation">
+    <div class="bar">
+      <a class="mark" href="${isBk(u)?'#/brooklyn':'#/fifth'}">${isBk(u)?'Brooklyn':'Fifth'} <span style="color:var(--accent)">&amp;</span> <span style="opacity:.45">${isBk(u)?'Fifth':'Brooklyn'}</span></a>
+      <div class="nav-links">
+        ${items}
+        <a href="${other[0]}" class="link-u">${other[1]}</a>
+        <a href="#/book" class="btn stamp" style="padding:.65rem 1.3rem">Book</a>
+      </div>
+      <button class="burger" type="button" data-open aria-label="Open menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="sheet ${isBk(u)?'tex-brick':'tex-stock'}" id="sheet" aria-hidden="true">
+    <div class="bar" style="max-width:110rem;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem var(--pad)">
+      <span class="mark">${isBk(u)?'Brooklyn':'Fifth'}</span>
+      <button class="burger" type="button" data-close aria-label="Close menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="items">
+      ${sheetItems}
+      <div class="${isBk(u)?'rule':'rule-h'}" style="margin-top:2rem;padding-top:1.5rem;display:flex;flex-direction:column;gap:1rem;align-items:flex-start">
+        <a href="#/book" class="btn stamp" data-close>Book an appointment</a>
+        <a href="${other[0]}" class="stamp" style="color:var(--accent)" data-close>${other[1]}</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function demoBlock(u){
+  const dark = isBk(u);
+  return `
+  <section class="sec ${dark?'tex-brick grain':''}" style="${dark?'':'background:var(--ff-noir)'}" aria-labelledby="demo-h">
+    <div class="wrap grid" style="grid-template-columns:1fr">
+      <div class="two-col" style="display:grid;gap:clamp(2rem,4vw,5rem)">
+        <h2 id="demo-h" class="t-colossal ${dark?'slab':'didone'}" style="color:${dark?'var(--bk-paper)':'var(--ff-chalk)'}">
+          ${cut("This is a")}${dark?cut("demonstration","brass"):`<span class="cut"><span class="ital" style="color:var(--ff-champagne)">demonstration</span></span>`}
+        </h2>
+        <div>
+          <p data-rev class="${dark?'grot measure':'gara measure-s'}" style="font-size:${dark?'1.3rem':'1.5rem'};line-height:1.65;color:${dark?'rgba(231,221,201,.8)':'rgba(255,255,255,.8)'}">
+            Brooklyn &amp; Fifth does not exist. The barbers, the colourists, the prices and the two addresses were written for this build. Everything you have clicked through, the split entry, the razor, the dryer, the six-step booking, is running in your browser with nothing behind it.
+          </p>
+          <p data-rev class="${dark?'grot measure':'gara measure-s'}" style="margin-top:1.5rem;font-size:${dark?'1.3rem':'1.5rem'};line-height:1.65;color:${dark?'rgba(231,221,201,.8)':'rgba(255,255,255,.8)'}">
+            It was built by Manhattan Studios to show what a single brand can look like when it is designed rather than assembled. If your business has two sides, or one side that deserves better than a template, this is the conversation.
+          </p>
+          <a data-rev href="#/book" class="btn stamp" style="margin-top:2.5rem;${dark?'':'background:var(--ff-chalk);color:var(--ff-noir)'}">${AGENCY.cta} ${arrow(26)}</a>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function footer(u){
+  const dark = isBk(u);
+  const col = dark?'rgba(231,221,201,.55)':'rgba(0,0,0,.55)';
+  const head = dark?'class="stamp" style="color:var(--bk-brass)"':'class="gara ital" style="color:var(--ff-rouge);font-size:1.05rem"';
+  return `
+  <footer style="padding:3.5rem var(--pad);background:${dark?'var(--bk-ink)':'var(--ff-cream)'};border-top:1px solid ${dark?'rgba(182,154,106,.2)':'rgba(0,0,0,.14)'}">
+    <div class="wrap" style="display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+      <div><p ${head}>The Brooklyn Room</p><p class="grot" style="margin-top:.75rem;line-height:1.6;color:${col}">214 Wythe Avenue<br>Williamsburg, Brooklyn<br>(718) 555-0142</p></div>
+      <div><p ${head}>The Fifth Room</p><p class="grot" style="margin-top:.75rem;line-height:1.6;color:${col}">1067 Fifth Avenue, third floor<br>Upper East Side, New York<br>(212) 555-0198</p></div>
+      <div><p ${head}>Elsewhere</p><ul class="grot" style="margin-top:.75rem;line-height:1.9;color:${col}">
+        <li><a class="link-u" href="#/locations">Both addresses</a></li>
+        <li><a class="link-u" href="#/book">Book a chair</a></li>
+        <li><a class="link-u" href="#/">Back to the split</a></li></ul></div>
+      <div style="display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem">
+        <p class="${dark?'slab':'didone'}" style="font-size:1.5rem;line-height:1.15;color:${dark?'rgba(231,221,201,.8)':'rgba(0,0,0,.8)'}">${dark?'Built sharp. Stay classic.':'New York looks good on you.'}</p>
+        <p class="stamp" style="color:${dark?'rgba(182,154,106,.7)':'rgba(0,0,0,.45)'}">${AGENCY.signature}</p>
+      </div>
+    </div>
+    <p class="grot ${dark?'rule':'rule-h'}" style="max-width:var(--wrap);margin:3rem auto 0;padding-top:1.5rem;font-size:.95rem;color:${dark?'rgba(231,221,201,.35)':'rgba(0,0,0,.4)'}">
+      Fictional brand, fictional people, fictional addresses. Photography from Unsplash, credited on the locations page. No appointment made here reaches anyone.
+    </p>
+  </footer>`;
+}
+
+function baBlock(x,u,i){
+  const dark = isBk(u);
+  return `
+  <figure data-rev style="transition-delay:${i*80}ms">
+    <div class="ba-frame" data-ba>
+      <img src="${x.b}" alt="${x.ba}" loading="lazy" ${dark?'':'style="filter:grayscale(1)"'}>
+      <div class="ba-after" style="clip-path:inset(0 50% 0 0)"><img src="${x.a}" alt="${x.aa}" loading="lazy"></div>
+      <div class="ba-div" style="left:50%"><span class="ba-knob"><svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M8 1L3 6l5 5M14 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+      <span class="ba-tag stamp" style="left:.75rem;background:${dark?'rgba(23,23,21,.8)':'rgba(0,0,0,.75)'};color:#e7ddc9">Before</span>
+      <span class="ba-tag stamp" style="right:.75rem;background:${dark?'var(--bk-brass)':'var(--ff-rouge)'};color:${dark?'var(--bk-ink)':'#fff'}">After</span>
+    </div>
+    <label class="sr" for="ba-${u}-${i}">Reveal the finished result for ${x.t}</label>
+    <input class="ba" id="ba-${u}-${i}" type="range" min="0" max="100" value="50">
+    <figcaption style="margin-top:1rem">
+      <h3 class="${dark?'slab':'didone'}" style="font-size:1.5rem;color:var(--fg)">${x.t}</h3>
+      <p class="${dark?'grot measure':'gara measure-s'}" style="margin-top:.4rem;font-size:1.1rem;color:${dark?'rgba(231,221,201,.6)':'rgba(0,0,0,.65)'}">${x.n}</p>
+      <p class="stamp" style="margin-top:.5rem;color:var(--accent)">${x.by}</p>
+    </figcaption>
+  </figure>`;
+}
+
+function crossBlock(u){
+  const toFifth = isBk(u);
+  return `<section class="sec" style="padding-top:4rem;padding-bottom:4rem;background:${toFifth?'var(--bk-ink)':'transparent'}">
+    <a class="cross wrap" href="${toFifth?'#/fifth':'#/brooklyn'}" style="display:flex">
+      <div>
+        <p class="${toFifth?'stamp':'gara ital'}" style="color:var(--accent);${toFifth?'':'font-size:1.05rem'}">The other house</p>
+        <p class="${toFifth?'didone ital':'slab'}" style="margin-top:.75rem;font-size:clamp(2rem,5vw,3rem);color:var(--fg)">${toFifth?'Fifth Avenue':'Brooklyn'}</p>
+        <p class="${toFifth?'gara':'grot'}" style="margin-top:.4rem;font-size:1.2rem;color:${toFifth?'rgba(231,221,201,.6)':'rgba(0,0,0,.55)'};${toFifth?'':'text-transform:uppercase;letter-spacing:.11em'}">${toFifth?'New York looks good on you.':'Built sharp. Stay classic.'}</p>
+      </div>
+      <span class="stamp" style="display:flex;align-items:center;gap:.75rem;color:${toFifth?'rgba(231,221,201,.7)':'rgba(0,0,0,.6)'}">Cross the river ${arrow(34)}</span>
+    </a>
+  </section>`;
+}
+
+/* ============================================================ SVG pieces */
+function razorSVG(){
+  return `
+  <svg viewBox="0 0 420 940" style="height:100%;width:100%" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0.2">
+        <stop offset="0%" stop-color="#6f6f68"/><stop offset="26%" stop-color="#d8d6cd"/><stop offset="42%" stop-color="#f2efe6"/>
+        <stop offset="58%" stop-color="#b9b7ad"/><stop offset="78%" stop-color="#7c7a72"/><stop offset="100%" stop-color="#4a4842"/>
+      </linearGradient>
+      <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#cfcdc4"/></linearGradient>
+      <linearGradient id="scale" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#241a13"/><stop offset="35%" stop-color="#4a3728"/><stop offset="62%" stop-color="#34271E"/><stop offset="100%" stop-color="#1a130d"/>
+      </linearGradient>
+      <linearGradient id="pin" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e3cd9c"/><stop offset="55%" stop-color="#B69A6A"/><stop offset="100%" stop-color="#6f5c37"/></linearGradient>
+    </defs>
+    <g>
+      <rect x="168" y="452" width="84" height="452" rx="40" fill="url(#scale)"/>
+      <rect x="178" y="462" width="64" height="432" rx="32" fill="none" stroke="#B69A6A" stroke-opacity=".32" stroke-width="1.5"/>
+      <circle cx="210" cy="872" r="9" fill="url(#pin)"/>
+      <text x="210" y="700" text-anchor="middle" transform="rotate(90 210 700)" fill="#B69A6A" fill-opacity=".65" font-size="17" letter-spacing="7" font-family="Barlow Condensed, sans-serif">BROOKLYN &amp; FIFTH</text>
+    </g>
+    <g id="blade" style="transform:rotate(158deg)">
+      <path d="M196 452 L224 452 L232 500 L188 500 Z" fill="#5d5a52"/>
+      <path d="M196 452 C 196 400, 186 300, 182 214 C 180 158, 186 108, 202 74 C 212 52, 226 44, 236 52 C 244 58, 246 74, 244 104 C 240 190, 236 330, 234 452 Z" fill="url(#steel)"/>
+      <path d="M206 448 C 204 350, 200 236, 202 160 C 203 118, 210 84, 220 66" stroke="#fff" stroke-opacity=".5" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M196 452 C 196 400, 186 300, 182 214 C 180 158, 186 108, 202 74" stroke="url(#edge)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <text id="etch" x="228" y="300" text-anchor="middle" transform="rotate(-91 228 300)" fill="#3a382f" fill-opacity=".85" font-size="15" letter-spacing="4" font-family="Barlow Condensed, sans-serif">SHEFFIELD STEEL</text>
+    </g>
+  </svg>`;
+}
+
+function dryerSVG(){
+  let streams = "";
+  for (let i=0;i<5;i++){
+    const y = 158 + i*16;
+    streams += `<path class="stream" d="M552 ${y} C 590 ${y-8+i*3}, 640 ${y+10}, 700 ${y+(i-2)*12}" stroke="#8A1520" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round" fill="none"/>`;
+  }
+  return `
+  <svg viewBox="0 0 620 520" style="height:100%;width:100%" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="dbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2b2b2b"/><stop offset="34%" stop-color="#000"/><stop offset="72%" stop-color="#161616"/><stop offset="100%" stop-color="#000"/></linearGradient>
+      <linearGradient id="dchrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E3C9A8"/><stop offset="48%" stop-color="#f6ecdc"/><stop offset="100%" stop-color="#a98d68"/></linearGradient>
+      <radialGradient id="dgrille" cx=".5" cy=".5" r=".5"><stop offset="0%" stop-color="#8A1520"/><stop offset="70%" stop-color="#3a0a0e"/><stop offset="100%" stop-color="#000"/></radialGradient>
+    </defs>
+    <g transform="rotate(19 240 250)">
+      <rect x="198" y="236" width="92" height="252" rx="30" fill="url(#dbody)"/>
+      <rect x="216" y="330" width="56" height="16" rx="8" fill="#E3C9A8" fill-opacity=".85"/>
+      <rect x="216" y="360" width="56" height="10" rx="5" fill="#E3C9A8" fill-opacity=".4"/>
+      <path d="M244 488 C 244 508, 206 506, 196 518" stroke="#000" stroke-width="11" stroke-linecap="round" fill="none"/>
+    </g>
+    <rect x="112" y="118" width="330" height="136" rx="68" fill="url(#dbody)"/>
+    <ellipse cx="126" cy="186" rx="20" ry="62" fill="url(#dgrille)"/>
+    <ellipse cx="126" cy="186" rx="12" ry="44" fill="none" stroke="#8A1520" stroke-opacity=".5" stroke-width="2"/>
+    <path d="M170 140 C 250 128, 340 130, 420 146" stroke="#fff" stroke-opacity=".16" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M440 128 L534 152 L534 220 L440 244 Z" fill="url(#dchrome)"/>
+    <rect x="528" y="150" width="12" height="72" rx="5" fill="#8A1520"/>
+    <g>${streams}</g>
+    <path id="strand" d="M556 196 C 600 188, 646 206, 700 194" stroke="#000" stroke-opacity=".35" stroke-width="2.2" fill="none"/>
+  </svg>`;
+}
+
+function mapSVG(u,label){
+  if (isBk(u)){
+    let s="",a="";
+    for(let i=0;i<9;i++) s+=`<line x1="-80" y1="${20+i*48}" x2="680" y2="${20+i*48}" stroke="#B69A6A" stroke-opacity=".28" stroke-width="1"/>`;
+    for(let i=0;i<7;i++) a+=`<line x1="${20+i*96}" y1="-80" x2="${20+i*96}" y2="500" stroke="#B69A6A" stroke-opacity=".2" stroke-width="1"/>`;
+    return `<svg viewBox="0 0 600 420" style="width:100%;height:100%" role="img" aria-label="Stylised street map showing ${label}">
+      <rect width="600" height="420" fill="#171715"/>
+      <g transform="rotate(-14 300 210)" opacity=".55">${s}${a}
+        <line x1="-80" y1="212" x2="680" y2="212" stroke="#B69A6A" stroke-opacity=".75" stroke-width="2.5"/></g>
+      <path d="M-20 300 C 90 268, 150 210, 130 120 C 118 66, 60 34, -20 20 L -20 420 Z" fill="#22211E" stroke="#B69A6A" stroke-opacity=".25"/>
+      <text x="52" y="212" fill="#B69A6A" fill-opacity=".45" font-size="13" letter-spacing="5" transform="rotate(-74 52 212)" font-family="Barlow Condensed, sans-serif">EAST RIVER</text>
+      <text x="360" y="126" fill="#B69A6A" fill-opacity=".5" font-size="13" letter-spacing="5" font-family="Barlow Condensed, sans-serif">WYTHE AVE</text>
+      <circle cx="322" cy="208" r="30" fill="#711E1E" fill-opacity=".5"/><circle cx="322" cy="208" r="8" fill="#B69A6A"/>
+      <line x1="322" y1="208" x2="322" y2="150" stroke="#B69A6A" stroke-width="1.5"/>
+      <text x="332" y="146" fill="#E7DDC9" font-size="17" letter-spacing="3" font-family="Barlow Condensed, sans-serif">214</text>
+      <text x="24" y="398" fill="#E7DDC9" fill-opacity=".35" font-size="12" letter-spacing="6" font-family="Barlow Condensed, sans-serif">NOT TO SCALE. NOT A REAL ADDRESS.</text>
+    </svg>`;
+  }
+  let s="",a="";
+  for(let i=0;i<11;i++) s+=`<line x1="0" y1="${18+i*38}" x2="600" y2="${18+i*38}" stroke="#000" stroke-opacity=".14" stroke-width="1"/>`;
+  for(let i=0;i<6;i++) a+=`<line x1="${140+i*92}" y1="0" x2="${140+i*92}" y2="420" stroke="#000" stroke-opacity=".12" stroke-width="1"/>`;
+  return `<svg viewBox="0 0 600 420" style="width:100%;height:100%" role="img" aria-label="Stylised street map showing ${label}">
+    <rect width="600" height="420" fill="#F6F1E7"/>${s}${a}
+    <rect x="0" y="0" width="132" height="420" fill="#E3C9A8" fill-opacity=".55"/>
+    <text x="66" y="210" text-anchor="middle" transform="rotate(-90 66 210)" fill="#000" fill-opacity=".4" font-size="15" letter-spacing="7" font-family="Cormorant Garamond, serif">CENTRAL PARK</text>
+    <line x1="140" y1="0" x2="140" y2="420" stroke="#8A1520" stroke-opacity=".7" stroke-width="2.5"/>
+    <text x="152" y="44" fill="#8A1520" font-size="15" letter-spacing="4" font-family="Cormorant Garamond, serif">FIFTH AVENUE</text>
+    <text x="300" y="212" fill="#000" fill-opacity=".4" font-size="13" letter-spacing="4" font-family="Cormorant Garamond, serif">E 86TH ST</text>
+    <circle cx="140" cy="206" r="26" fill="#8A1520" fill-opacity=".12"/><circle cx="140" cy="206" r="7" fill="#8A1520"/>
+    <line x1="140" y1="206" x2="222" y2="152" stroke="#8A1520" stroke-width="1.2"/>
+    <text x="228" y="150" fill="#000" font-size="18" font-style="italic" font-family="Bodoni Moda, serif">1067, third floor</text>
+    <text x="24" y="400" fill="#000" fill-opacity=".35" font-size="13" font-style="italic" font-family="Cormorant Garamond, serif">Not to scale, and not a real address.</text>
+  </svg>`;
+}
+
+/* ================================================================ views */
+function viewSplit(){
+  return {u:null, html:`
+  <main id="main" class="split">
+    <section class="panel p-bk">
+      <img src="${U('photo-1781455793310-8427c96454c7',1700)}" alt="">
+      <div class="veil"></div>
+      <a class="inner" href="#/brooklyn" aria-label="Enter Brooklyn, the barbershop">
+        <span class="stamp" style="position:absolute;left:var(--pad);top:var(--pad);color:var(--bk-brass)">One / Barbershop</span>
+        <h2 class="slab t-mega" style="color:var(--bk-paper)"><span style="display:block">Brook</span><span style="display:block;margin-top:-.06em;color:var(--bk-brass)">lyn</span></h2>
+        <p class="grot" style="margin-top:1.25rem;max-width:24ch;font-size:1.2rem;font-weight:500;text-transform:uppercase;letter-spacing:.11em;color:rgba(231,221,201,.75)">Built sharp. Stay classic.</p>
+        <span class="stamp" style="margin-top:1.75rem;display:inline-flex;width:fit-content;align-items:center;gap:.75rem;padding-bottom:.25rem;border-bottom:1px solid rgba(182,154,106,.6);color:var(--bk-brass)">Enter the shop ${arrow(26)}</span>
+      </a>
+    </section>
+    <section class="panel p-ff u-ff">
+      <img src="${U('photo-1606143412458-acc5f86de897',1700)}" alt="">
+      <div class="veil"></div>
+      <a class="inner" href="#/fifth" aria-label="Enter Fifth, the beauty salon">
+        <span class="gara ital" style="position:absolute;left:var(--pad);top:var(--pad);font-size:1.05rem;color:rgba(0,0,0,.6)">Two, the beauty salon</span>
+        <h2 class="didone t-mega" style="color:var(--ff-noir)"><span style="display:block">Fifth</span><span style="display:block;margin-top:-.1em;font-style:italic;color:var(--ff-rouge)">Avenue</span></h2>
+        <p class="gara ital" style="margin-top:1.25rem;max-width:26ch;font-size:1.45rem;line-height:1.3;color:rgba(0,0,0,.75)">New York looks good on you.</p>
+        <span class="gara ital" style="margin-top:1.75rem;display:inline-flex;width:fit-content;align-items:center;gap:.75rem;padding-bottom:.25rem;border-bottom:1px solid rgba(0,0,0,.5);font-size:1.15rem;color:var(--ff-noir)">Enter the salon ${arrow(26)}</span>
+      </a>
+    </section>
+    <div class="seam" aria-hidden="true"></div><div class="amp" aria-hidden="true">&amp;</div>
+    <p class="stamp" style="position:absolute;inset-inline:0;bottom:1rem;text-align:center;font-size:.6rem;color:rgba(231,221,201,.5);z-index:9;pointer-events:none">${AGENCY.signature}</p>
+  </main>`};
+}
+
+function viewBrooklynHome(){
+  const voices = VOICES.filter(v=>v.u==="bk");
+  return {u:"bk", path:"#/brooklyn", html:`
+  <section class="hero-bk" id="hero">
+    <img src="${U('photo-1772567925625-3488620d1626',1900)}" alt="A barbershop window on a New York street after dark">
+    <div class="veil"></div><div class="grain" style="position:absolute;inset:0"></div>
+    <span class="drop" aria-hidden="true"></span>
+    <div class="hero-in">
+      <h1 class="slab" style="color:var(--bk-paper)">
+        <span class="cut" style="overflow:hidden;display:block"><span class="t-mega" style="display:block">Built sharp.</span></span>
+        <span class="cut" style="overflow:hidden;display:block;padding-left:8vw"><span class="t-mega" style="display:block;color:var(--bk-brass)">Stay classic.</span></span>
+      </h1>
+      <div class="fade-up" style="margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-end;justify-content:space-between">
+        <p class="grot measure" style="font-size:1.35rem;line-height:1.6;color:rgba(231,221,201,.75)">Four chairs on Wythe Avenue. A radio that only picks up one station properly. Clippers, shears and a straight razor that gets stropped in front of you because that part was never for show.</p>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:1.5rem 2.5rem">
+          <div><p class="stamp" style="color:rgba(231,221,201,.4)">Est.</p><p class="slab" style="font-size:2rem;color:var(--bk-paper)">2016</p></div>
+          <div><p class="stamp" style="color:rgba(231,221,201,.4)">Chairs</p><p class="slab" style="font-size:2rem;color:var(--bk-paper)">04</p></div>
+          <div><p class="stamp" style="color:rgba(231,221,201,.4)">Walk-ins</p><p class="slab" style="font-size:2rem;color:var(--bk-paper)">Before 11</p></div>
+          <a href="#/book" class="btn stamp">Take a chair</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tex-brick grain">
+    <div class="wrap">
+      <p data-rev class="slab t-huge" style="max-width:22ch;color:var(--bk-paper)">A haircut is <span class="brass">forty minutes</span> of someone paying attention to you.</p>
+      <p data-rev class="grot measure" style="margin-top:2rem;font-size:1.3rem;line-height:1.65;color:rgba(231,221,201,.65)">That is the entire pitch. We do not sell product at the register, we do not run a loyalty app and nobody here will ask what you do for work unless you bring it up first.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--bk-smoke)" aria-labelledby="bk-team">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:3rem">
+        <h2 id="bk-team" class="slab t-colossal" style="color:var(--bk-paper)">${cut("Meet the")}${cut("barbers","brass")}</h2>
+        <a href="#/brooklyn/barbers" class="stamp link-u brass">All four, in full</a>
+      </div>
+      <ul style="display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+        ${BARBERS.map((b,i)=>`<li data-rev style="transition-delay:${i*60}ms"><a class="card" href="#/brooklyn/barbers">
+          <div class="card-img sat"><img src="${b.portrait}" alt="${b.name}, ${b.role}" loading="lazy">
+            <span class="stamp" style="position:absolute;left:0;bottom:0;background:var(--bk-brass);color:var(--bk-ink);padding:.35rem .75rem">${b.chair}</span></div>
+          <h3 class="slab" style="margin-top:1rem;font-size:1.4rem;color:var(--bk-paper)">${b.name}</h3>
+          <p class="grot" style="margin-top:.2rem;font-size:1.1rem;color:rgba(231,221,201,.55)">${b.spec[0]}</p></a></li>`).join("")}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec tex-brick" aria-labelledby="bk-svc">
+    <div class="wrap">
+      <h2 id="bk-svc" class="slab t-colossal" style="color:var(--bk-paper)">${cut("The list")}</h2>
+      <ul style="margin-top:2.5rem">
+        ${BK_SVC.slice(0,4).map(s=>`<li class="rule" style="padding:1.25rem 0"><a href="#/brooklyn/services" class="card" style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 1.5rem">
+          <span class="slab" style="font-size:clamp(1.5rem,4vw,2.4rem);color:var(--bk-paper)">${s.name}</span>
+          <span class="stamp" style="color:rgba(231,221,201,.5)">${s.m} min &nbsp;/&nbsp; $${s.p}</span></a></li>`).join("")}
+      </ul>
+      <a href="#/brooklyn/services" class="btn-g stamp" style="margin-top:2.5rem;color:var(--bk-brass)">Open the razor ${arrow(22)}</a>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--bk-smoke)" aria-labelledby="bk-ba">
+    <div class="wrap">
+      <h2 id="bk-ba" class="slab t-colossal" style="color:var(--bk-paper)">${cut("Fresh from")}${cut("the chair","brass")}</h2>
+      <p class="grot measure" style="margin-top:1.5rem;font-size:1.3rem;color:rgba(231,221,201,.65)">Drag the handle, or use the arrow keys once it has focus.</p>
+      <div style="margin-top:3rem;display:grid;gap:3rem 2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        ${BA_BK.map((x,i)=>baBlock(x,"bk",i)).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tex-brick grain" aria-labelledby="bk-wall">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:3rem">
+        <h2 id="bk-wall" class="slab t-colossal" style="color:var(--bk-paper)">${cut("The wall")}</h2>
+        <a href="#/brooklyn/gallery" class="stamp link-u brass">Everything that is pinned up</a>
+      </div>
+      <ul style="display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+        ${WALL.slice(0,4).map((w,i)=>`<li data-rev style="transition-delay:${i*50}ms"><figure class="polaroid" style="transform:rotate(${w.tilt}deg)">
+          <div class="shot" style="aspect-ratio:1/1"><img src="${w.src}" alt="${w.alt}" loading="lazy"></div>
+          <figcaption class="grot" style="margin-top:.5rem;font-size:.95rem;color:rgba(23,23,21,.7)">${w.cap}</figcaption></figure></li>`).join("")}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--bk-wine);padding-top:5rem;padding-bottom:5rem">
+    <div class="wrap" style="display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      ${voices.map((v,i)=>`<blockquote data-rev style="transition-delay:${i*90}ms">
+        <p class="grot ital" style="font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.25;color:var(--bk-paper)">&ldquo;${v.q}&rdquo;</p>
+        <footer class="stamp" style="margin-top:1.25rem;color:rgba(231,221,201,.6)">${v.n}, ${v.d}</footer></blockquote>`).join("")}
+    </div>
+  </section>
+
+  ${crossBlock("bk")}
+  ${demoBlock("bk")}`};
+}
+
+function viewBarbers(){
+  const years = BARBERS.reduce((n,b)=>n+b.years,0);
+  return {u:"bk", path:"#/brooklyn/barbers", html:`
+  <section class="sec tex-brick grain" style="padding-top:9rem;padding-bottom:2rem">
+    <div class="wrap">
+      <h1 class="slab t-mega" style="color:var(--bk-paper)">${cut("Meet the")}${cut("barbers","brass")}</h1>
+      <p class="grot measure" style="margin-top:2rem;font-size:1.3rem;line-height:1.6;color:rgba(231,221,201,.7)">${years} years between the four of them, and not one of them will tell you the others are wrong. They will tell you they would have done it differently.</p>
+    </div>
+  </section>
+  <section class="sec tex-brick" style="padding-top:0">
+    <div class="wrap">
+      ${BARBERS.map((p,i)=>`<article data-rev class="${i?'rule':''}" style="padding:3.5rem 0">
+        <div style="display:grid;gap:2rem;grid-template-columns:1fr" class="plate">
+          <div style="${i%2?'order:2':''}">
+            <div class="plate-img"><img src="${p.portrait}" alt="${p.name}, ${p.role}" loading="lazy"><div class="plate-veil"></div></div>
+            <h2 class="slab t-huge" style="position:relative;margin-top:-.36em;color:var(--bk-paper);${i%2?'text-align:right':''}">
+              ${p.name.split(" ").map((w,j)=>`<span style="display:block${j===1?';color:var(--bk-brass)':''}">${w}</span>`).join("")}</h2>
+            <p class="stamp" style="margin-top:.75rem;color:rgba(182,154,106,.8);${i%2?'text-align:right':''}">&ldquo;${p.handle}&rdquo;</p>
+          </div>
+          <div>
+            <p class="stamp" style="color:rgba(231,221,201,.45)">${p.chair} <span class="brass">|</span> ${p.role}</p>
+            <p class="grot measure" style="margin-top:1.25rem;font-size:1.25rem;line-height:1.65;color:rgba(231,221,201,.8)">${p.bio}</p>
+            <blockquote style="margin-top:1.75rem;border-left:2px solid var(--bk-brass);padding-left:1.25rem">
+              <p class="grot ital measure" style="font-size:1.5rem;line-height:1.25;color:var(--bk-paper)">${p.quote}</p></blockquote>
+            <dl style="margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid rgba(182,154,106,.25);border-bottom:1px solid rgba(182,154,106,.25)">
+              <div><dt class="stamp" style="color:rgba(231,221,201,.45)">Years</dt><dd class="slab" style="font-size:1.75rem;color:var(--bk-paper)">${p.years}</dd></div>
+              <div><dt class="stamp" style="color:rgba(231,221,201,.45)">Rating</dt><dd class="slab brass" style="font-size:1.75rem">${p.rating.toFixed(1)}</dd></div>
+              <div><dt class="stamp" style="color:rgba(231,221,201,.45)">Reviews</dt><dd class="slab" style="font-size:1.75rem;color:var(--bk-paper)">${p.reviews}</dd></div>
+            </dl>
+            <p class="grot" style="margin-top:1.25rem;font-size:1.1rem;color:rgba(231,221,201,.6)">${p.spec.join(", ")}</p>
+            <div style="margin-top:1.5rem;display:flex;gap:.75rem">${p.port.map((s,k)=>`<div class="thumb"><img src="${s}" alt="Work by ${p.name}, frame ${k+1}" loading="lazy" style="filter:saturate(.6)"></div>`).join("")}</div>
+            <a href="#/book?pro=${p.id}" class="btn stamp" style="margin-top:2rem">Book ${p.name.split(" ")[0]} ${arrow(22)}</a>
+          </div>
+        </div></article>`).join("")}
+    </div>
+  </section>
+  ${demoBlock("bk")}`};
+}
+
+function viewBkServices(){
+  return {u:"bk", path:"#/brooklyn/services", html:`
+  <section class="sec tex-brick grain" style="padding-top:9rem" aria-labelledby="svc-h">
+    <div class="wrap">
+      <header style="margin-bottom:3.5rem;max-width:48rem">
+        <h1 id="svc-h" class="slab t-colossal" style="color:var(--bk-paper)">${cut("What the")}${cut("chair costs","brass")}</h1>
+        <p class="grot measure" style="margin-top:1.5rem;font-size:1.3rem;line-height:1.6;color:rgba(231,221,201,.7)">Six services, four chairs, no packages and no upsell at the register. Run your eye down the list. The razor opens as you go.</p>
+      </header>
+      <div class="razor-layout" style="display:grid;gap:2.5rem">
+        <div style="order:2">
+          <ul id="svc-list">
+            ${BK_SVC.map((s,i)=>`<li class="rule"><button type="button" class="svc-row" data-i="${i}" aria-expanded="false">
+              <span style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 1.5rem">
+                <span class="svc-name">${s.name}</span>
+                <span class="stamp" style="color:rgba(231,221,201,.55)">${s.m} min &nbsp;/&nbsp; $${s.p}</span></span>
+              <span class="grot measure" style="display:block;margin-top:.5rem;font-size:1.15rem;color:rgba(231,221,201,.6)">${s.blurb}</span>
+              <span class="svc-detail"><span style="display:block;overflow:hidden"><span class="grot measure" style="display:block;margin-top:1rem;border-left:2px solid rgba(182,154,106,.6);padding-left:1.25rem;font-size:1.15rem;line-height:1.6;color:rgba(231,221,201,.75)">${s.detail}</span></span></span>
+            </button></li>`).join("")}
+          </ul>
+        </div>
+        <div style="order:1">
+          <div class="razor-wrap">${razorSVG()}</div>
+          <p id="razor-note" class="grot ital" style="margin-top:1rem;text-align:center;font-size:.95rem;color:rgba(231,221,201,.4)">Folded. Pick a service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  ${demoBlock("bk")}`};
+}
+
+function viewWall(){
+  return {u:"bk", path:"#/brooklyn/gallery", html:`
+  <section class="sec tex-brick grain" style="padding-top:9rem;padding-bottom:2.5rem">
+    <div class="wrap">
+      <h1 class="slab t-mega" style="color:var(--bk-paper)">${cut("The")}${cut("wall","brass")}</h1>
+      <p class="grot measure" style="margin-top:2rem;font-size:1.3rem;line-height:1.6;color:rgba(231,221,201,.7)">The west side of the shop, floor to ceiling. Nothing here is for sale and nothing gets taken down, which is why it now runs onto the ceiling.</p>
+    </div>
+  </section>
+  <section class="sec tex-brick" style="padding-top:0">
+    <div class="wrap wall">
+      ${WALL.map((w,i)=>`<figure data-rev class="polaroid" style="transform:rotate(${w.tilt}deg);transition-delay:${(i%3)*70}ms">
+        <div class="shot" style="aspect-ratio:${w.span==='tall'?'3/4':w.span==='wide'?'4/3':'1/1'}"><img src="${w.src}" alt="${w.alt}" loading="lazy"></div>
+        <figcaption style="margin-top:.75rem;display:flex;align-items:baseline;justify-content:space-between;gap:.75rem">
+          <span class="grot" style="font-size:1.1rem;color:var(--bk-ink)">${w.cap}</span>
+          <span class="stamp" style="color:rgba(23,23,21,.45)">${w.meta}</span></figcaption></figure>`).join("")}
+      <div data-rev style="border:1px solid rgba(182,154,106,.4);background:var(--bk-wine);padding:2rem;transform:rotate(1.6deg)">
+        <p class="grot ital" style="font-size:1.4rem;line-height:1.3;color:var(--bk-paper)">If your photo is up here and you want it down, tell whoever is on chair one. It comes down that day and the gap stays.</p>
+        <a href="#/book" class="stamp brass" style="display:inline-block;margin-top:1.5rem">Book a chair</a>
+      </div>
+    </div>
+  </section>
+  ${demoBlock("bk")}`};
+}
+
+function viewFifthHome(){
+  const voices = VOICES.filter(v=>v.u==="ff");
+  return {u:"ff", path:"#/fifth", html:`
+  <section class="tex-stock" id="hero" style="padding:9rem var(--pad) clamp(3rem,6vw,6rem);position:relative;overflow:hidden">
+    <div class="wrap" style="display:grid;gap:2.5rem;grid-template-columns:1fr" id="ff-hero-grid">
+      <div style="display:flex;flex-direction:column;justify-content:center">
+        <p class="gara ital fade-up" style="font-size:1.2rem;color:rgba(0,0,0,.5)">1067 Fifth Avenue, third floor, by appointment</p>
+        <h1 class="didone" style="margin-top:1.25rem;color:var(--ff-noir)">
+          <span class="cut"><span class="t-colossal" style="display:block">New York</span></span>
+          <span class="cut"><span class="t-colossal ital" style="display:block;color:var(--ff-rouge)">looks good</span></span>
+          <span class="cut"><span class="t-colossal" style="display:block">on you.</span></span>
+        </h1>
+        <div class="fade-up">
+          <p class="gara measure-s" style="margin-top:2rem;font-size:1.5rem;line-height:1.6;color:rgba(0,0,0,.75)">A room above the avenue with four stations, north light and no music. Colour is judged against the window, never under a lamp, which is why the appointments run long and the diary is short.</p>
+          <div style="margin-top:2.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem">
+            <a href="#/book" class="btn stamp">Request a station</a>
+            <a href="#/fifth/services" class="link-u gara ital" style="font-size:1.25rem;color:rgba(0,0,0,.7)">See the service list</a>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div style="position:relative;aspect-ratio:3/4;overflow:hidden;background:rgba(227,201,168,.4)">
+          <img src="${U('photo-1727341557146-4abab94d0812',1300)}" alt="A woman photographed against a wall on the Upper East Side" style="width:100%;height:100%;object-fit:cover;object-position:top">
+        </div>
+        <p class="gara ital" style="margin-top:.5rem;font-size:1.05rem;color:rgba(0,0,0,.45)">Colour by Isabel, photographed off Madison</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--ff-noir)">
+    <div class="wrap" style="display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <p class="didone t-huge" style="color:var(--ff-chalk)">Four stations, <span class="ital" style="color:var(--ff-champagne)">north light</span> and no music.</p>
+      <div><p data-rev class="gara measure-s" style="font-size:1.45rem;line-height:1.6;color:rgba(255,255,255,.7)">We book one client per stylist per slot. If your colour needs three hours it gets three hours, and nobody is being processed at the basin while you sit in the chair.</p></div>
+    </div>
+  </section>
+
+  <section class="sec tex-stock" aria-labelledby="ff-team">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:3.5rem">
+        <h2 id="ff-team" class="didone t-colossal" style="color:var(--ff-noir)">${cut("The women behind")}${cut("the looks","ital rouge")}</h2>
+        <a href="#/fifth/team" class="link-u gara ital" style="font-size:1.25rem;color:rgba(0,0,0,.7)">Read the full edit</a>
+      </div>
+      <ul style="display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+        ${STYLISTS.map((s,i)=>`<li data-rev style="transition-delay:${i*60}ms"><a class="card" href="#/fifth/team">
+          <div class="card-img gray" style="background:rgba(227,201,168,.4)"><img src="${s.portrait}" alt="${s.name}, ${s.role}" loading="lazy"></div>
+          <h3 class="didone" style="margin-top:1rem;font-size:1.4rem;color:var(--ff-noir)">${s.name}</h3>
+          <p class="gara ital" style="margin-top:.2rem;font-size:1.1rem;color:rgba(0,0,0,.55)">${s.role}</p></a></li>`).join("")}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec tex-stock" style="border-top:1px solid rgba(0,0,0,.1);border-bottom:1px solid rgba(0,0,0,.1)" aria-labelledby="ff-svc">
+    <div class="wrap" style="display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <h2 id="ff-svc" class="didone t-colossal" style="color:var(--ff-noir)">${cut("What we")}${cut("do here","ital rouge")}</h2>
+      <ul>
+        ${FF_SVC.slice(0,4).map(s=>`<li class="rule-h" style="padding:1.25rem 0"><a href="#/fifth/services" class="card" style="display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem">
+          <span class="didone" style="font-size:clamp(1.4rem,3.4vw,2rem);color:var(--ff-noir)">${s.name}</span>
+          <span class="gara ital" style="font-size:1.25rem;color:rgba(0,0,0,.55)">$${s.p}</span></a></li>`).join("")}
+        <li style="padding-top:1.75rem"><a href="#/fifth/services" class="btn stamp">Turn the dryer on</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec tex-stock" aria-labelledby="ff-ba">
+    <div class="wrap">
+      <h2 id="ff-ba" class="didone t-colossal" style="color:var(--ff-noir)">${cut("Spotted on")}${cut("Fifth","ital rouge")}</h2>
+      <p class="gara measure-s" style="margin-top:1.5rem;font-size:1.45rem;color:rgba(0,0,0,.65)">The same head of hair, an appointment apart. Drag the handle, or give it focus and use the arrow keys.</p>
+      <div style="margin-top:3rem;display:grid;gap:3rem 2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        ${BA_FF.map((x,i)=>baBlock(x,"ff",i)).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--ff-noir)" aria-labelledby="ff-edit">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:3rem">
+        <h2 id="ff-edit" class="didone t-colossal" style="color:var(--ff-chalk)">${cut("The Edit")}</h2>
+        <a href="#/fifth/edit" class="link-u gara ital" style="font-size:1.25rem;color:var(--ff-champagne)">Issue four, in full</a>
+      </div>
+      <ul style="display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+        ${EDIT.slice(0,4).map((e,i)=>`<li data-rev="wipe" style="transition-delay:${i*60}ms">
+          <div style="position:relative;aspect-ratio:3/4;overflow:hidden;background:#000"><img src="${e.src}" alt="${e.alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+          <p class="gara ital" style="margin-top:.5rem;font-size:1.05rem;color:rgba(255,255,255,.6)">${e.cap}</p></li>`).join("")}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec tex-stock" style="padding-top:5rem;padding-bottom:5rem">
+    <div class="wrap" style="display:grid;gap:3rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      ${voices.map((v,i)=>`<blockquote data-rev style="transition-delay:${i*90}ms">
+        <p class="didone ital" style="font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.25;color:var(--ff-noir)">&ldquo;${v.q}&rdquo;</p>
+        <footer class="gara" style="margin-top:1.25rem;font-size:1.1rem;color:rgba(0,0,0,.55)">${v.n}, ${v.d}</footer></blockquote>`).join("")}
+    </div>
+  </section>
+
+  <div class="tex-stock">${crossBlock("ff")}</div>
+  ${demoBlock("ff")}`};
+}
+
+function viewTeam(){
+  return {u:"ff", path:"#/fifth/team", html:`
+  <section class="sec tex-stock" style="padding-top:9rem;padding-bottom:1rem">
+    <div class="wrap">
+      <p class="gara ital" style="font-size:1.2rem;color:rgba(0,0,0,.5)">The Fifth Edit, issue four</p>
+      <h1 class="didone t-mega" style="margin-top:1rem;color:var(--ff-noir)">${cut("The women behind")}${cut("the looks","ital rouge")}</h1>
+      <p class="gara measure-s" style="margin-top:2rem;font-size:1.45rem;line-height:1.6;color:rgba(0,0,0,.7)">Fifty-eight years of work between four people who agree on almost nothing except that the consultation is the appointment and the rest is execution.</p>
+    </div>
+  </section>
+  <section class="sec tex-stock" style="padding-top:0">
+    <div class="wrap">
+      ${STYLISTS.map((p,i)=>{const parts=p.name.split(" ");return `<article data-rev class="${i?'rule-h':''}" style="padding:4rem 0">
+        <div style="display:grid;gap:2rem;grid-template-columns:1fr" class="spread">
+          <div style="${i%2?'order:2':''}">
+            <div style="position:relative;aspect-ratio:3/4;overflow:hidden;background:rgba(227,201,168,.4)"><img src="${p.portrait}" alt="${p.name}, ${p.role}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top"></div>
+            <p class="gara ital" style="margin-top:.5rem;font-size:1.05rem;color:rgba(0,0,0,.45)">${p.handle}, photographed at ${p.chair}</p>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center">
+            <h2 class="didone t-huge" style="color:var(--ff-noir)"><span style="display:block">${parts[0]}</span><span style="display:block;font-style:italic;color:var(--ff-rouge)">${parts.slice(1).join(" ")}</span></h2>
+            <p class="gara" style="margin-top:1rem;font-size:1.25rem;color:rgba(0,0,0,.55)">${p.role}</p>
+            <p class="gara measure-s dropcap" style="margin-top:1.5rem;font-size:1.25rem;line-height:1.65;color:rgba(0,0,0,.8)">${p.bio}</p>
+            <blockquote style="margin-top:2rem"><p class="didone ital measure-s" style="font-size:clamp(1.3rem,2.6vw,1.8rem);line-height:1.25;color:var(--ff-noir)">&ldquo;${p.quote}&rdquo;</p></blockquote>
+            <p class="gara" style="margin-top:2rem;font-size:1.1rem;color:rgba(0,0,0,.6)">${p.spec.join(" &nbsp;|&nbsp; ")}</p>
+            <p class="gara" style="margin-top:.75rem;font-size:1.1rem;color:rgba(0,0,0,.6)"><span class="rouge">${p.rating.toFixed(1)}</span> from ${p.reviews} reviews, ${p.years} years behind the chair.</p>
+            <div style="margin-top:1.5rem;display:flex;gap:.75rem">${p.port.map((s,k)=>`<div class="thumb" style="background:rgba(227,201,168,.4)"><img src="${s}" alt="Work by ${p.name}, frame ${k+1}" loading="lazy"></div>`).join("")}</div>
+            <a href="#/book?pro=${p.id}" class="btn stamp" style="margin-top:2rem;width:fit-content">Book ${parts[0]} ${arrow(22)}</a>
+          </div>
+        </div></article>`}).join("")}
+    </div>
+  </section>
+  ${demoBlock("ff")}`};
+}
+
+function viewFfServices(){
+  return {u:"ff", path:"#/fifth/services", html:`
+  <section class="sec tex-stock" style="padding-top:9rem" aria-labelledby="ffs-h">
+    <div class="wrap">
+      <header style="margin-bottom:3.5rem;max-width:48rem">
+        <h1 id="ffs-h" class="didone t-colossal" style="color:var(--ff-noir)">${cut("The service")}${cut("list","ital rouge")}</h1>
+        <p class="gara measure-s" style="margin-top:1.5rem;font-size:1.45rem;line-height:1.6;color:rgba(0,0,0,.7)">Prices are what they are because the appointments are long. Nothing on this list is booked back to back with anything else.</p>
+      </header>
+      <div class="dryer-layout" style="display:grid;gap:2rem">
+        <div>
+          <div class="dryer-wrap">${dryerSVG()}</div>
+          <p class="gara ital" style="margin-top:.5rem;font-size:1.05rem;color:rgba(0,0,0,.45)">Scroll and the list moves in the stream.</p>
+        </div>
+        <ul id="svc-stream" style="overflow:hidden">
+          ${FF_SVC.map((s,i)=>`<li class="svc-line rule-h" data-w="${(0.35+i*0.16).toFixed(2)}">
+            <div style="padding:1.75rem 0">
+              <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 2rem">
+                <h2 class="didone" style="font-size:clamp(1.5rem,4vw,2.6rem);color:var(--ff-noir)">${s.name}</h2>
+                <p class="gara ital" style="font-size:1.25rem;color:var(--ff-rouge)">$${s.p} <span style="font-style:normal;color:rgba(0,0,0,.45);margin-left:.75rem">${s.m} min</span></p>
+              </div>
+              <p class="gara measure-s" style="margin-top:.5rem;font-size:1.25rem;line-height:1.6;color:rgba(0,0,0,.7)">${s.blurb}</p>
+              <p class="gara ital measure-s" style="margin-top:.75rem;font-size:1.1rem;line-height:1.6;color:rgba(0,0,0,.5)">${s.detail}</p>
+            </div></li>`).join("")}
+        </ul>
+      </div>
+    </div>
+  </section>
+  ${demoBlock("ff")}`};
+}
+
+function viewEdit(){
+  return {u:"ff", path:"#/fifth/edit", html:`
+  <section class="sec tex-stock" style="padding-top:9rem;padding-bottom:2.5rem">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(0,0,0,.2);padding-bottom:1.25rem">
+        <p class="gara ital" style="font-size:1.2rem;color:rgba(0,0,0,.5)">Issue four</p>
+        <p class="gara ital" style="font-size:1.2rem;color:rgba(0,0,0,.5)">Eight pages, four stations</p>
+      </div>
+      <h1 class="didone t-mega" style="margin-top:2.5rem;color:var(--ff-noir)">${cut("The")}${cut("Edit","ital rouge")}</h1>
+      <p class="gara measure-s" style="margin-top:2rem;font-size:1.45rem;line-height:1.6;color:rgba(0,0,0,.7)">Photographed in the room, in the light we actually work in, with the hair as it left the chair. Nothing here was retouched, because the point of the exercise is that the colour holds up in a photograph taken at four in the afternoon.</p>
+    </div>
+  </section>
+  <section class="sec tex-stock" style="padding-top:0">
+    <div class="wrap edit-grid">
+      ${EDIT.map((e,i)=>`<figure data-rev="wipe" class="sp-${e.span} ${i%3===1?'drop-lo':''}" style="transition-delay:${(i%2)*80}ms">
+        <div style="position:relative;aspect-ratio:${e.span==='tall'?'3/4':e.span==='wide'?'4/3':'1/1'};overflow:hidden;background:rgba(227,201,168,.3)"><img src="${e.src}" alt="${e.alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+        <figcaption style="margin-top:.75rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem;border-top:1px solid rgba(0,0,0,.15);padding-top:.5rem">
+          <span class="didone" style="font-size:1.2rem;color:var(--ff-noir)">${e.cap}</span>
+          <span class="gara ital" style="font-size:1.05rem;color:rgba(0,0,0,.5)">${e.meta}</span></figcaption></figure>`).join("")}
+    </div>
+  </section>
+  ${demoBlock("ff")}`};
+}
+
+function viewLocations(){
+  const [bk,ff] = LOCS;
+  const hours = (l,dark) => l.hours.map(([d,h])=>`<div class="${dark?'rule':'rule-h'}" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:.75rem;margin-top:.75rem">
+    <dt class="stamp" style="color:${dark?'rgba(231,221,201,.5)':'rgba(0,0,0,.5)'}">${d}</dt><dd class="${dark?'grot':'gara'}" style="font-size:1.2rem;color:var(--fg)">${h}</dd></div>`).join("");
+  return {u:"bk", path:"#/locations", plain:true, html:`
+  <nav class="nav scrolled">
+    <div class="bar">
+      <a class="mark" href="#/">Brooklyn <span class="brass">&amp;</span> Fifth</a>
+      <div style="display:flex;align-items:center;gap:1.5rem">
+        <a href="#/brooklyn" class="stamp" style="color:rgba(231,221,201,.6)">Shop</a>
+        <a href="#/fifth" class="stamp" style="color:rgba(231,221,201,.6)">Salon</a>
+        <a href="#/book" class="btn stamp" style="padding:.6rem 1.1rem">Book</a>
+      </div>
+    </div>
+  </nav>
+  <main id="main">
+  <section class="sec tex-brick grain" style="padding-top:9rem;padding-bottom:4rem">
+    <div class="wrap">
+      <h1 class="slab t-mega" style="color:var(--bk-paper)">${cut("Two rooms,")}${cut("one river","brass")}</h1>
+      <p class="grot measure" style="margin-top:2rem;font-size:1.3rem;line-height:1.6;color:rgba(231,221,201,.7)">Eleven kilometres and about forty minutes on the subway, depending on which train is running that day.</p>
+    </div>
+  </section>
+
+  <section class="sec tex-brick" style="padding-top:0" aria-labelledby="loc-bk">
+    <div class="wrap" style="display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <div data-rev>
+        <div class="map-plate">${mapSVG("bk",bk.name)}</div>
+        <div class="shot16" style="margin-top:1.5rem"><img src="${bk.img}" alt="${bk.alt}" loading="lazy" style="filter:saturate(.6)"></div>
+      </div>
+      <div data-rev style="transition-delay:90ms">
+        <h2 id="loc-bk" class="slab t-huge" style="color:var(--bk-paper)">${bk.name}</h2>
+        <p class="grot brass" style="margin-top:1.5rem;font-size:1.5rem;line-height:1.2">${bk.street}<span style="display:block;margin-top:.25rem;color:rgba(231,221,201,.6)">${bk.city}</span></p>
+        <dl style="margin-top:2rem">${hours(bk,true)}</dl>
+        <p class="grot measure" style="margin-top:2rem;font-size:1.25rem;line-height:1.6;color:rgba(231,221,201,.7)">${bk.note}</p>
+        <p class="stamp" style="margin-top:1.5rem;color:rgba(231,221,201,.45)">${bk.subway}</p>
+        <p class="grot" style="margin-top:.5rem;font-size:1.25rem;color:var(--bk-paper)">${bk.phone}</p>
+        <a href="#/book" class="btn stamp" style="margin-top:2rem">Book the Brooklyn room</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tex-stock u-ff" aria-labelledby="loc-ff">
+    <div class="wrap" style="display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <div data-rev>
+        <h2 id="loc-ff" class="didone t-huge" style="color:var(--ff-noir)">${ff.name}</h2>
+        <p class="gara rouge" style="margin-top:1.5rem;font-size:1.5rem;line-height:1.2">${ff.street}<span style="display:block;margin-top:.25rem;color:rgba(0,0,0,.6)">${ff.city}</span></p>
+        <dl style="margin-top:2rem">${hours(ff,false)}</dl>
+        <p class="gara measure-s" style="margin-top:2rem;font-size:1.25rem;line-height:1.6;color:rgba(0,0,0,.7)">${ff.note}</p>
+        <p class="stamp" style="margin-top:1.5rem;color:rgba(0,0,0,.45)">${ff.subway}</p>
+        <p class="gara" style="margin-top:.5rem;font-size:1.25rem;color:var(--ff-noir)">${ff.phone}</p>
+        <a href="#/book" class="btn stamp" style="margin-top:2rem">Request the Fifth room</a>
+      </div>
+      <div data-rev style="transition-delay:90ms">
+        <div class="map-plate">${mapSVG("ff",ff.name)}</div>
+        <div class="shot16" style="margin-top:1.5rem;background:rgba(227,201,168,.3)"><img src="${ff.img}" alt="${ff.alt}" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--bk-ink);padding-top:4rem;padding-bottom:4rem">
+    <div class="wrap">
+      <h2 class="slab" style="font-size:1.8rem;color:var(--bk-paper)">Photography</h2>
+      <p class="grot measure" style="margin-top:1rem;font-size:1.1rem;line-height:1.6;color:rgba(231,221,201,.6)">Every photograph in this build comes from Unsplash and belongs to the person who took it. In rough order of appearance: ${CREDITS.join(", ")}.</p>
+      <p class="stamp" style="margin-top:2.5rem;color:rgba(182,154,106,.7)">${AGENCY.signature}</p>
+    </div>
+  </section>
+  </main>`};
+}
+
+/* ============================================================== booking */
+const STEPS = ["Service","Professional","Date","Time","Details","Review"];
+const BOOK = {u:"bk",step:0,svc:null,pro:null,date:null,time:null,name:"",email:"",phone:"",notes:"",first:false,touched:false,done:false,
+  ref:"BF-"+(1000+Math.floor(Math.random()*8999))};
+
+function buildDays(u){
+  const out=[], start=new Date(); start.setHours(12,0,0,0);
+  for(let i=1;i<=16;i++){
+    const d=new Date(start); d.setDate(start.getDate()+i); const dow=d.getDay();
+    out.push({iso:d.toISOString().slice(0,10),
+      wd:d.toLocaleDateString("en-US",{weekday:"short"}),
+      dd:String(d.getDate()).padStart(2,"0"),
+      mm:d.toLocaleDateString("en-US",{month:"short"}),
+      closed: u==="bk" ? dow===1 : (dow===0||dow===1)});
+  }
+  return out;
+}
+const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(v).trim());
+const bkSvcList = () => BOOK.u==="bk" ? BK_SVC : FF_SVC;
+const bkTeam = () => BOOK.u==="bk" ? BARBERS : STYLISTS;
+const bkSvc = () => bkSvcList().find(s=>s.id===BOOK.svc) || null;
+const bkPro = () => bkTeam().find(p=>p.id===BOOK.pro) || null;
+const detailsOk = () => BOOK.name.trim().length>=2 && emailOk(BOOK.email);
+function canAdvance(){
+  switch(BOOK.step){
+    case 0: return !!BOOK.svc; case 1: return !!BOOK.pro; case 2: return !!BOOK.date;
+    case 3: return !!BOOK.time; case 4: return detailsOk(); default: return true;
+  }
+}
+
+function bookDone(){
+  const s=bkSvc(), p=bkPro(), dark=BOOK.u==="bk";
+  const rows=[["House",dark?"The Brooklyn Room":"The Fifth Room"],["Service",s?s.name:""],["With",p?p.name:""],
+    ["When",BOOK.date+" at "+BOOK.time],["Under",esc(BOOK.name)],["Reference",BOOK.ref]];
+  return `<div class="wrap" style="max-width:52rem">
+    <span class="warn stamp">${AGENCY.warn}</span>
+    <h1 class="${dark?'slab':'didone'} t-mega" style="margin-top:2rem;color:var(--fg)">You&rsquo;re<span style="display:block;color:var(--accent);${dark?'':'font-style:italic'}">booked.</span></h1>
+    <dl style="margin-top:3rem;display:grid;gap:1.5rem 2rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+      ${rows.map(([k,v])=>`<div class="${dark?'rule':'rule-h'}" style="padding-top:.75rem">
+        <dt class="stamp" style="opacity:.45">${k}</dt><dd class="${dark?'grot':'didone'}" style="margin-top:.25rem;font-size:1.4rem;color:var(--fg)">${v}</dd></div>`).join("")}
+    </dl>
+    <p class="${dark?'grot measure':'gara measure-s'}" style="margin-top:2.5rem;font-size:1.3rem;line-height:1.6;opacity:.7">Nothing was sent, nothing was saved and no chair is being held. Reload the page and the whole appointment disappears, which is exactly what a demonstration should do.</p>
+    <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem">
+      <button type="button" class="btn stamp" data-act="reset">Book another</button>
+      <a href="${dark?'#/brooklyn':'#/fifth'}" class="btn-g stamp">Back to the ${dark?'shop':'salon'}</a>
+    </div>
+  </div>`;
+}
+
+function bookBody(){
+  if (BOOK.done) return bookDone();
+  const dark = BOOK.u==="bk";
+  const s=bkSvc(), p=bkPro();
+  const taken = BOOK.pro ? (TAKEN[BOOK.pro]||[]) : [];
+  const H = t => `<h1 class="${dark?'slab':'didone'} t-huge" style="color:var(--fg)">${t}</h1>`;
+  const P = t => `<p class="${dark?'grot measure':'gara measure-s'}" style="margin-top:1rem;font-size:1.3rem;opacity:.65">${t}</p>`;
+  let body = "";
+
+  if (BOOK.step===0){
+    body = H("Pick a service")+P("Two houses, two lists. Choose the room first.")+
+    `<div role="group" aria-label="Choose a house" style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem">
+      ${[["bk","Brooklyn, barbershop"],["ff","Fifth, salon"]].map(([k,l])=>`<button type="button" class="stamp" data-house="${k}" aria-pressed="${BOOK.u===k}"
+        style="padding:.75rem 1.5rem;cursor:pointer;border:1px solid ${BOOK.u===k?'transparent':(dark?'rgba(182,154,106,.35)':'rgba(0,0,0,.25)')};background:${BOOK.u===k?(dark?'var(--bk-brass)':'var(--ff-noir)'):'transparent'};color:${BOOK.u===k?(dark?'var(--bk-ink)':'#fff'):'inherit'}">${l}</button>`).join("")}
+    </div>
+    <div style="margin-top:2.5rem;display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      ${bkSvcList().map(x=>`<button type="button" class="chip${BOOK.svc===x.id?' on':''}" data-svc="${x.id}" aria-pressed="${BOOK.svc===x.id}">
+        <span style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem">
+          <span class="${dark?'slab':'didone'}" style="font-size:1.4rem">${x.name}</span><span class="stamp" style="opacity:.7">$${x.p}</span></span>
+        <span class="${dark?'grot':'gara'}" style="display:block;margin-top:.35rem;font-size:1.1rem;opacity:.68">${x.m} minutes. ${x.blurb}</span></button>`).join("")}
+    </div>`;
+  }
+  else if (BOOK.step===1){
+    body = H("Choose who")+P("Everyone here can do "+(s?s.name.toLowerCase():"this")+". They do not all do it the same way.")+
+    `<div style="margin-top:2.5rem;display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      ${bkTeam().map(x=>`<button type="button" class="chip${BOOK.pro===x.id?' on':''}" data-pro="${x.id}" aria-pressed="${BOOK.pro===x.id}" style="display:flex;gap:1rem">
+        <span class="thumb" style="flex:none"><img src="${x.port[0]}" alt="" loading="lazy"></span>
+        <span style="min-width:0">
+          <span class="${dark?'slab':'didone'}" style="display:block;font-size:1.25rem">${x.name}</span>
+          <span class="stamp" style="display:block;margin-top:.25rem;opacity:.6">${x.chair}</span>
+          <span class="${dark?'grot':'gara'}" style="display:block;margin-top:.3rem;font-size:1rem;opacity:.7">${x.spec.slice(0,2).join(", ")}</span>
+          <span class="stamp" style="display:block;margin-top:.25rem;color:var(--accent)">${x.rating.toFixed(1)} / ${x.reviews} reviews</span>
+        </span></button>`).join("")}
+    </div>`;
+  }
+  else if (BOOK.step===2){
+    const ds = buildDays(BOOK.u);
+    body = H("Pick a day")+P(dark?"The shop is dark on Mondays.":"Sundays and Mondays are by request only.")+
+    `<div style="margin-top:2.5rem;display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(84px,1fr))">
+      ${ds.map(d=>`<button type="button" class="chip${BOOK.date===d.iso?' on':''}" data-date="${d.iso}" ${d.closed?'disabled':''} style="text-align:center;padding:.75rem .5rem">
+        <span class="stamp" style="display:block;opacity:.6">${d.wd}</span>
+        <span class="${dark?'slab':'didone'}" style="display:block;margin-top:.2rem;font-size:1.4rem">${d.dd}</span>
+        <span class="stamp" style="display:block;opacity:.45">${d.mm}</span></button>`).join("")}
+    </div>`;
+  }
+  else if (BOOK.step===3){
+    body = H("Pick a time")+P((p?p.name:"Your professional")+" on "+BOOK.date+". Faded slots are already taken.")+
+    `<div style="margin-top:2.5rem;display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(84px,1fr))">
+      ${SLOTS.map(t=>{const gone=taken.indexOf(t)>-1;return `<button type="button" class="chip${BOOK.time===t?' on':''}" data-time="${t}" ${gone?'disabled':''} style="text-align:center;padding:.75rem .5rem;${gone?'text-decoration:line-through':''}">
+        <span class="${dark?'slab':'didone'}" style="font-size:1.25rem">${t}</span></button>`}).join("")}
+    </div>`;
+  }
+  else if (BOOK.step===4){
+    const nameBad = BOOK.touched && BOOK.name.trim().length<2;
+    const mailBad = BOOK.touched && !emailOk(BOOK.email);
+    body = H("Your details")+P("Nothing here leaves the browser. It is here so the flow is complete.")+
+    `<div style="margin-top:2.5rem;display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      <div><label class="stamp" style="display:block;opacity:.5" for="f-name">Name</label>
+        <input id="f-name" class="fld" data-f="name" value="${esc(BOOK.name)}" placeholder="First and last" autocomplete="name" aria-invalid="${nameBad}">
+        ${nameBad?`<p class="stamp" style="margin-top:.5rem;color:${dark?'#c9605f':'var(--ff-rouge)'}">Add a name so the chair knows who is coming.</p>`:""}</div>
+      <div><label class="stamp" style="display:block;opacity:.5" for="f-mail">Email</label>
+        <input id="f-mail" class="fld" type="email" data-f="email" value="${esc(BOOK.email)}" placeholder="you@example.com" autocomplete="email" aria-invalid="${mailBad}">
+        ${mailBad?`<p class="stamp" style="margin-top:.5rem;color:${dark?'#c9605f':'var(--ff-rouge)'}">That address is missing something.</p>`:""}</div>
+      <div><label class="stamp" style="display:block;opacity:.5" for="f-tel">Phone, optional</label>
+        <input id="f-tel" class="fld" type="tel" data-f="phone" value="${esc(BOOK.phone)}" placeholder="(212) 555-0100" autocomplete="tel"></div>
+      <div style="padding-top:1.6rem"><label style="display:flex;align-items:center;gap:.75rem;cursor:pointer">
+        <input type="checkbox" data-f="first" ${BOOK.first?'checked':''} style="width:1.2rem;height:1.2rem;accent-color:${dark?'#B69A6A':'#8A1520'}">
+        <span class="${dark?'grot':'gara'}" style="font-size:1.15rem;opacity:.8">First time here</span></label></div>
+      <div style="grid-column:1/-1"><label class="stamp" style="display:block;opacity:.5" for="f-note">Anything we should know</label>
+        <textarea id="f-note" class="fld" data-f="notes" rows="3" style="resize:none" placeholder="Allergies, a photo you want to bring, how long since the last cut.">${esc(BOOK.notes)}</textarea></div>
+    </div>`;
+  }
+  else {
+    const rows=[["House",dark?"The Brooklyn Room, 214 Wythe Avenue":"The Fifth Room, 1067 Fifth Avenue"],
+      ["Service",s?`${s.name}, ${s.m} min, $${s.p}`:"—"],["With",p?`${p.name}, ${p.chair}`:"—"],
+      ["Day",BOOK.date||"—"],["Time",BOOK.time||"—"],["Name",esc(BOOK.name)||"—"],["Email",esc(BOOK.email)||"—"],
+      ["Phone",BOOK.phone||"Not given"],["First visit",BOOK.first?"Yes":"No"],["Notes",esc(BOOK.notes)||"None"]];
+    body = H("Read it back")+P("Last look before the confirmation that confirms nothing.")+
+    `<dl style="margin-top:2.5rem;display:grid;gap:1.5rem 2rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+      ${rows.map(([k,v])=>`<div class="${dark?'rule':'rule-h'}" style="padding-top:.75rem">
+        <dt class="stamp" style="opacity:.45">${k}</dt><dd class="${dark?'grot':'gara'}" style="margin-top:.25rem;font-size:1.2rem">${v}</dd></div>`).join("")}
+    </dl>`;
+  }
+
+  const nav = `<div style="margin-top:3.5rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem">
+    ${BOOK.step>0?'<button type="button" class="btn-g stamp" data-act="back">Back</button>':''}
+    ${BOOK.step<5
+      ? `<button type="button" class="btn stamp" data-act="next" ${(BOOK.step!==4 && !canAdvance())?'disabled':''}>Continue to ${STEPS[BOOK.step+1]}</button>`
+      : `<button type="button" class="btn stamp" data-act="confirm">Confirm the demo booking</button>`}
+    ${(BOOK.step===4 && BOOK.touched && !detailsOk())?`<span class="stamp" style="color:${dark?'#c9605f':'var(--ff-rouge)'}">Two fields still need you.</span>`:''}
+  </div>`;
+
+  const steps = `<ol class="steps">${STEPS.map((l,i)=>{
+    const st = i<BOOK.step?"past":i===BOOK.step?"now":"next";
+    return `<li><button type="button" class="stamp ${st}" data-goto="${i}" ${i>BOOK.step?'disabled style="cursor:default"':''} ${st==='now'?'aria-current="step"':''}>
+      <i>${st==="past"?'&#10003;':i+1}</i>${l}</button></li>`;}).join("")}</ol>`;
+
+  return `<div class="wrap" style="max-width:64rem">
+    <span class="warn stamp">${AGENCY.warn}</span>
+    ${steps}
+    <div style="margin-top:3rem">${body}</div>
+    ${nav}
+  </div>`;
+}
+
+function viewBook(){
+  return {u:BOOK.u, path:"#/book", plain:true, html:`
+  <nav class="nav scrolled">
+    <div class="bar">
+      <a class="mark" href="#/">Brooklyn <span style="color:var(--accent)">&amp;</span> Fifth</a>
+      <div style="display:flex;align-items:center;gap:1.5rem">
+        <a href="#/brooklyn" class="stamp" style="opacity:.65">Shop</a>
+        <a href="#/fifth" class="stamp" style="opacity:.65">Salon</a>
+      </div>
+    </div>
+  </nav>
+  <main id="main" class="sec ${BOOK.u==='bk'?'tex-brick grain':'tex-stock'}" style="min-height:100vh;padding-top:8rem">
+    <div id="book-body">${bookBody()}</div>
+  </main>
+  <footer style="padding:2rem var(--pad);background:${BOOK.u==='bk'?'var(--bk-ink)':'var(--ff-cream)'};border-top:1px solid ${BOOK.u==='bk'?'rgba(182,154,106,.2)':'rgba(0,0,0,.14)'}">
+    <p class="stamp" style="color:var(--accent)">${AGENCY.signature}</p>
+  </footer>`};
+}
+
+/* =============================================================== router */
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const app = document.getElementById("app");
+let lastU = null, rafId = null, scrollHandlers = [], resizeHandlers = [];
+
+const ROUTES = {
+  "#/":viewSplit, "":viewSplit, "#":viewSplit,
+  "#/brooklyn":viewBrooklynHome, "#/brooklyn/barbers":viewBarbers,
+  "#/brooklyn/services":viewBkServices, "#/brooklyn/gallery":viewWall,
+  "#/fifth":viewFifthHome, "#/fifth/team":viewTeam,
+  "#/fifth/services":viewFfServices, "#/fifth/edit":viewEdit,
+  "#/book":viewBook, "#/locations":viewLocations
+};
+
+function notFound(){
+  return {u:"bk", plain:true, html:`<main id="main" class="tex-brick grain" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad)">
+    <div class="wrap">
+      <p class="stamp brass">Nothing at this address</p>
+      <h1 class="slab t-mega" style="margin-top:1.5rem;color:var(--bk-paper)">Wrong<span style="display:block;color:var(--bk-brass)">door.</span></h1>
+      <p class="grot measure" style="margin-top:2rem;font-size:1.3rem;color:rgba(231,221,201,.7)">Two houses, eleven pages, and this is not one of them. The split screen is the way back in.</p>
+      <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem">
+        <a href="#/" class="btn stamp">Back to the split</a>
+        <a href="#/brooklyn" class="btn-g stamp">The shop</a>
+        <a href="#/fifth" class="btn-g stamp">The salon</a>
+      </div>
+    </div></main>`};
+}
+
+function curtain(u){
+  if (REDUCED) return;
+  const el = document.createElement("div");
+  el.className = "curtain";
+  const bg = u==="bk" ? "var(--bk-ink)" : "var(--ff-cream)";
+  const fg = u==="bk" ? "var(--bk-brass)" : "var(--ff-rouge)";
+  const font = u==="bk" ? "font-family:var(--slab);text-transform:uppercase;letter-spacing:.11em" : "font-family:var(--didone);font-style:italic";
+  el.innerHTML = `<span style="background:${bg};transition-delay:0ms"></span><span style="background:${bg};transition-delay:60ms"></span><span style="background:${bg};transition-delay:120ms"></span><span style="background:${bg};transition-delay:180ms"></span>
+    <b style="color:${fg};${font};font-size:clamp(2.5rem,9vw,6rem)">${u==="bk"?"Brooklyn":"Fifth"}</b>`;
+  if (u!=="bk") el.querySelectorAll("span").forEach(s=>s.style.transformOrigin="bottom");
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add("up")));
+  setTimeout(()=>el.remove(), 1500);
+}
+
+function render(){
+  const raw = location.hash.split("?")[0] || "#/";
+  const query = location.hash.split("?")[1] || "";
+  const make = ROUTES[raw] || notFound;
+
+  if (raw === "#/book" && query){
+    const m = /pro=([\w-]+)/.exec(query);
+    if (m){
+      const found = BARBERS.concat(STYLISTS).filter(p=>p.id===m[1])[0];
+      if (found){ BOOK.u = found.u; BOOK.pro = found.id; }
+    }
+  }
+
+  const view = make();
+  const u = view.u;
+
+  if (rafId) cancelAnimationFrame(rafId), rafId = null;
+  scrollHandlers.forEach(h=>window.removeEventListener("scroll",h));
+  resizeHandlers.forEach(h=>window.removeEventListener("resize",h));
+  scrollHandlers = []; resizeHandlers = [];
+
+  app.className = u ? (u==="bk"?"u-bk":"u-ff") : "";
+  app.innerHTML = view.plain || !u
+    ? view.html
+    : nav(u, view.path) + `<main id="main">` + view.html + `</main>` + footer(u);
+
+  if (u && u !== lastU && lastU !== null) curtain(u);
+  lastU = u;
+
+  window.scrollTo(0,0);
+  wire(u);
+}
+
+/* ============================================================ behaviour */
+function wire(u){
+  /* reveal on scroll */
+  const targets = $$("[data-rev], .cut");
+  if (REDUCED){ targets.forEach(t=>t.classList.add("in")); }
+  else {
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    },{threshold:.25, rootMargin:"0px 0px -8% 0px"});
+    targets.forEach(t=>io.observe(t));
+  }
+
+  /* hero load sequence */
+  const hero = $("#hero");
+  if (hero) requestAnimationFrame(()=>requestAnimationFrame(()=>hero.classList.add("go")));
+
+  /* nav shadow + burger */
+  const navEl = $(".nav");
+  if (navEl && !navEl.classList.contains("scrolled")){
+    const onScroll = ()=>navEl.classList.toggle("scrolled", window.scrollY>24);
+    onScroll(); window.addEventListener("scroll",onScroll,{passive:true}); scrollHandlers.push(onScroll);
+  }
+  const sheet = $("#sheet");
+  if (sheet){
+    $$("[data-open]").forEach(b=>b.addEventListener("click",()=>{sheet.classList.add("open");sheet.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";}));
+    $$("[data-close]").forEach(b=>b.addEventListener("click",()=>{sheet.classList.remove("open");sheet.setAttribute("aria-hidden","true");document.body.style.overflow="";}));
+  }
+
+  /* two-column helpers that need a media query rather than auto-fit */
+  const mqWide = window.matchMedia("(min-width:1024px)");
+  const applyCols = () => {
+    const razor = $(".razor-layout");
+    if (razor) razor.style.gridTemplateColumns = mqWide.matches ? "1fr minmax(240px,340px)" : "1fr";
+    const dryer = $(".dryer-layout");
+    if (dryer) dryer.style.gridTemplateColumns = mqWide.matches ? "minmax(220px,380px) 1fr" : "1fr";
+    $$(".plate, .spread").forEach(el=>{ el.style.gridTemplateColumns = mqWide.matches ? "1fr 1fr" : "1fr"; });
+    const hg = $("#ff-hero-grid");
+    if (hg) hg.style.gridTemplateColumns = mqWide.matches ? "1.6fr 1fr" : "1fr";
+    const tc = $(".two-col");
+    if (tc) tc.style.gridTemplateColumns = mqWide.matches ? "1.15fr 1fr" : "1fr";
+    if (razor){ const l=$("#svc-list"); if(l) l.parentElement.style.order = mqWide.matches ? "1" : "2"; }
+  };
+  applyCols();
+  const onResize = ()=>applyCols();
+  window.addEventListener("resize", onResize);
+  resizeHandlers.push(onResize);
+
+  /* ---------------------------------------------------------- the razor */
+  const blade = $("#blade");
+  if (blade){
+    const etch = $("#etch"), note = $("#razor-note");
+    let active = null;
+    const setBlade = (i)=>{
+      active = i;
+      const angle = (REDUCED ? 22 : (i===null ? 158 : 34 - i*6));
+      blade.style.transform = "rotate("+angle+"deg)";
+      if (etch) etch.textContent = i===null ? "SHEFFIELD STEEL" : (BK_SVC[i].m+" MIN / $"+BK_SVC[i].p);
+      if (note) note.textContent = i===null ? "Folded. Pick a service." : "Open at "+BK_SVC[i].m+" minutes.";
+    };
+    setBlade(null);
+    $$(".svc-row").forEach(btn=>{
+      const i = Number(btn.dataset.i);
+      const open = ()=>{ $$(".svc-row").forEach(b=>{b.classList.remove("on");b.setAttribute("aria-expanded","false");});
+        btn.classList.add("on"); btn.setAttribute("aria-expanded","true"); setBlade(i); };
+      btn.addEventListener("mouseenter", open);
+      btn.addEventListener("focus", open);
+      btn.addEventListener("click", ()=>{ if(btn.classList.contains("on")){ btn.classList.remove("on"); btn.setAttribute("aria-expanded","false"); setBlade(null);} else open(); });
+    });
+  }
+
+  /* ---------------------------------------------------------- the dryer */
+  const stream = $("#svc-stream");
+  if (stream && !REDUCED){
+    const lines = $$(".svc-line", stream);
+    const strand = $("#strand");
+    let last = window.scrollY, vel = 0, target = 0;
+    const onScroll = ()=>{ const y=window.scrollY; target = Math.max(-26, Math.min(26, (y-last)*0.9)); last = y; };
+    window.addEventListener("scroll", onScroll, {passive:true}); scrollHandlers.push(onScroll);
+    const loop = ()=>{
+      target *= 0.86;
+      vel += (target - vel) * 0.18;
+      lines.forEach(el=>{ const w = Number(el.dataset.w)||1;
+        el.style.transform = "translateX("+(vel*w).toFixed(2)+"px) skewX("+(vel*w*0.08).toFixed(2)+"deg)"; });
+      if (strand) strand.style.transform = "translateX("+(vel*0.6).toFixed(2)+"px)";
+      rafId = requestAnimationFrame(loop);
+    };
+    rafId = requestAnimationFrame(loop);
+  }
+
+  /* --------------------------------------------------- before and after */
+  $$(".ba-frame").forEach(frame=>{
+    const after = $(".ba-after", frame), divider = $(".ba-div", frame);
+    const range = frame.parentElement.querySelector("input.ba");
+    const set = v => { const p = Math.max(0, Math.min(100, v));
+      after.style.clipPath = "inset(0 "+(100-p)+"% 0 0)"; divider.style.left = p+"%"; if(range) range.value = Math.round(p); };
+    const fromX = x => { const b = frame.getBoundingClientRect(); set(((x-b.left)/b.width)*100); };
+    frame.addEventListener("pointerdown", e=>{ frame.setPointerCapture(e.pointerId); fromX(e.clientX); });
+    frame.addEventListener("pointermove", e=>{ if(e.buttons===1) fromX(e.clientX); });
+    if (range) range.addEventListener("input", ()=>set(Number(range.value)));
+  });
+
+  /* -------------------------------------------------------- the booking */
+  const body = $("#book-body");
+  if (body){
+    const rerender = ()=>{ body.innerHTML = bookBody();
+      const root = $("#main");
+      if (root){ root.className = "sec " + (BOOK.u==="bk"?"tex-brick grain":"tex-stock"); root.style.minHeight="100vh"; root.style.paddingTop="8rem"; }
+      app.className = BOOK.u==="bk" ? "u-bk" : "u-ff";
+      const f = $("footer");
+      if (f){ f.style.background = BOOK.u==="bk"?"var(--bk-ink)":"var(--ff-cream)"; }
+      wireBook();
+    };
+    const wireBook = ()=>{
+      body.onclick = (e)=>{
+        const t = e.target.closest("button"); if(!t) return;
+        if (t.dataset.house){ const keep=BOOK.u; BOOK.u=t.dataset.house; if(keep!==BOOK.u){BOOK.svc=null;BOOK.pro=null;BOOK.date=null;BOOK.time=null;} return rerender(); }
+        if (t.dataset.svc){ BOOK.svc = t.dataset.svc; return rerender(); }
+        if (t.dataset.pro){ BOOK.pro = t.dataset.pro; return rerender(); }
+        if (t.dataset.date){ BOOK.date = t.dataset.date; return rerender(); }
+        if (t.dataset.time){ BOOK.time = t.dataset.time; return rerender(); }
+        if (t.dataset.goto !== undefined){ const n=Number(t.dataset.goto); if(n<=BOOK.step){BOOK.step=n;BOOK.touched=false;window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});rerender();} return; }
+        const act = t.dataset.act;
+        if (act==="back"){ BOOK.step=Math.max(0,BOOK.step-1); BOOK.touched=false; window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"}); return rerender(); }
+        if (act==="next"){ if(BOOK.step===4 && !detailsOk()){ BOOK.touched=true; return rerender(); }
+          if(!canAdvance()) return; BOOK.step=Math.min(5,BOOK.step+1); BOOK.touched=false; window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"}); return rerender(); }
+        if (act==="confirm"){ BOOK.done=true; window.scrollTo(0,0); return rerender(); }
+        if (act==="reset"){ Object.assign(BOOK,{step:0,svc:null,pro:null,date:null,time:null,name:"",email:"",phone:"",notes:"",first:false,touched:false,done:false}); return rerender(); }
+      };
+      body.oninput = (e)=>{
+        const f = e.target.dataset && e.target.dataset.f; if(!f) return;
+        BOOK[f] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+      };
+    };
+    wireBook();
+  }
+}
+
+document.addEventListener("keydown", e=>{
+  if (e.key !== "Escape") return;
+  const sh = document.getElementById("sheet");
+  if (sh && sh.classList.contains("open")){ sh.classList.remove("open"); sh.setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
+});
+
+window.addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>
