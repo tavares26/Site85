@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   NORTH 85 — design tokens
+   Concept store art direction: charcoal / sand / taupe with a single
+   burnt-red accent reserved for sale, markdowns and small indicators.
+------------------------------------------------------------------- */
+@theme {
+  --color-charcoal: #11110f;
+  --color-charcoal-soft: #1c1b18;
+  --color-sand: #f1eee7;
+  --color-sand-deep: #e6e1d6;
+  --color-taupe: #a39a8b;
+  --color-taupe-soft: #c9c2b6;
+  --color-paper: #ffffff;
+  --color-ember: #8c2f23;
+  --color-ember-soft: #a8503f;
+
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: var(--font-jost), "Helvetica Neue", sans-serif;
+
+  --tracking-label: 0.24em;
+  --tracking-wordmark: 0.34em;
+
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --breakpoint-xs: 24rem;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-sand);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-feature-settings: "kern", "liga";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-charcoal);
+    color: var(--color-sand);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+
+  /* Keyboard focus only — the editorial layout stays clean for mice. */
+  :focus-visible {
+    outline: 1px solid var(--color-charcoal);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Small caps label used across nav, eyebrows and buttons. */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .label-xs {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .wordmark {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: var(--tracking-wordmark);
+    text-transform: uppercase;
+  }
+
+  /* Underline that draws in from the left on hover. */
+  .link-rule {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-rule::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.25em;
+    height: 1px;
+    width: 100%;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-editorial);
+  }
+
+  .link-rule:hover::after,
+  .link-rule:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .rule {
+    border-top: 1px solid color-mix(in srgb, var(--color-charcoal) 12%, transparent);
+  }
+
+  .rule-strong {
+    border-top: 1px solid color-mix(in srgb, var(--color-charcoal) 20%, transparent);
+  }
+
+  /* Editorial page gutter — generous negative space, tight on mobile. */
+  .gutter {
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .gutter {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 90rem) {
+    .gutter {
+      padding-inline: 4rem;
+    }
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Film-grain overlay that keeps flat colour fields from looking digital. */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@keyframes n85-rise {
+  from {
+    transform: translate3d(0, 105%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* `both` keeps the final frame, so the reduced-motion override below lands the
+   words in place instead of leaving them masked. */
+.animate-rise {
+  animation: n85-rise 1.05s var(--ease-editorial) both;
+}
+
+@keyframes n85-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: n85-marquee 42s linear infinite;
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion: everything still works, nothing moves on its own.
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee {
+    animation: none;
+    transform: none;
+  }
+
+  .animate-rise {
+    animation: none;
+    transform: none;
+  }
+}
